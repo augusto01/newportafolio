@@ -6,11 +6,17 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-  background-color: #1a1a2e;
-  color: #e6e6e6;
-  line-height: 1.6;
+/* main.css o el archivo donde tengas estilos globales */
+
+body, html {
+  background-color: #121212; /* fondo oscuro */
+  color: #e0e0e0; /* texto claro */
+  font-family: 'Roboto', sans-serif; /* ejemplo de fuente */
+  margin: 0;
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+  padding: 0;
 }
+
 
 .container {
   max-width: 1200px;

@@ -4,12 +4,13 @@ import MateModel from './MateModel';
 
 const Scene = () => {
   return (
-    <Canvas>
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
-      <MateModel />
-      <OrbitControls />
+    <Canvas camera={{ position: [0, 1.5, 5] }}>
+        <ambientLight intensity={1} />
+        <pointLight position={[5, 5, 5]} />
+        <MateModel />
+        <OrbitControls enableZoom={false} />
     </Canvas>
+
   );
 };
 
