@@ -4,17 +4,14 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Scene from './components/Scene';
 import Footer from './components/Footer';
-Footer
+import Content from './components/Content';
+
 function App() {
   return (
-    <>
-      <Navbar />
+    <div style={{ display: 'flex', height: '100vh', width: '100%' }}>
       <Hero />
-      <Footer></Footer>
-      
-      
-  
-    </>
+      <Content />
+    </div>
   );
 }
 

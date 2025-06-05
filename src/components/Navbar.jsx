@@ -1,15 +1,15 @@
-import '../styles/navbar.css';
+import React from 'react';
+import '../styles/navbar.css'; // Asegurate de crear y vincular este archivo CSS
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="container">
-        <ul className="nav-links">
-          <li><a href="#home">Inicio</a></li>
-          <li><a href="#projects">Proyectos</a></li>
-          <li><a href="#contact">Contacto</a></li>
-        </ul>
-      </div>
+      <ul>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#formacion">Formación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
     </nav>
   );
 };

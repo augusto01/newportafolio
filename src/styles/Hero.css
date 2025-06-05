@@ -1,67 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
 .hero-section {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #0d1117, #161b22);
-  color: #f0f0f0;
+  justify-content: center;
+  background: radial-gradient(circle at center, #0d1117, #05070a);
+  color: #00ffe7;
   padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Orbitron', sans-serif;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+.hero-container {
+  max-width: 600px;
   text-align: center;
-  width: 100%;
+  padding: 2rem;
+  border: 1px solid #00ffe730;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00ffe720;
+  background-color: rgba(13, 17, 23, 0.7);
+  backdrop-filter: blur(4px);
 }
 
 .hero-title {
   font-size: 3rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: #00ffe7;
+  text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffcc;
+  animation: glowText 2s ease-in-out infinite alternate;
 }
 
 .hero-subtitle {
-  font-size: 2rem;
-  color: #e94560;
+  font-size: 1.5rem;
+  color: #00ffcc;
   margin-bottom: 2rem;
+  opacity: 0.9;
 }
 
 .social-links {
-  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.social-links a {
-  color: #f0f0f0;
-  margin: 0 1rem;
+.social-icon {
   font-size: 2rem;
-  transition: color 0.3s ease;
+  color: #00ffe7;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.social-links a:hover {
-  color: #e94560;
+.social-icon:hover {
+  transform: scale(1.2);
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
 }
 
 .btn-download-cv {
   display: inline-block;
-  padding: 0.7rem 1.5rem;
-  background-color: #e94560;
-  color: white;
+  padding: 0.75rem 1.8rem;
+  background-color: #00ffe7;
+  color: #0d1117;
   text-decoration: none;
-  border-radius: 5px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  margin-top: 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px #00ffe7;
+}
+
+.btn-download-cv i {
+  margin-right: 0.5rem;
 }
 
 .btn-download-cv:hover {
-  background-color: #b83248;
+  background-color: #00ffcc;
+  color: #000;
+  box-shadow: 0 0 15px #00ffcc;
+  transform: scale(1.05);
 }
 
-.mate-model {
-  margin: 3rem auto 0;
-  width: 100%;
-  max-width: 500px;
-  height: 400px;
+/* Animaciones */
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 10px #00ffe7;
+  }
+  to {
+    text-shadow: 0 0 20px #00ffe7, 0 0 40px #00ffcc;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -70,20 +108,14 @@
   }
 
   .hero-subtitle {
-    font-size: 1.5rem;
-  }
-
-  .social-links a {
-    font-size: 1.5rem;
-    margin: 0 0.5rem;
-  }
-
-  .mate-model {
-    height: 300px;
+    font-size: 1.2rem;
   }
 
   .btn-download-cv {
     font-size: 0.9rem;
-    padding: 0.6rem 1.2rem;
+  }
+
+  .social-icon {
+    font-size: 1.6rem;
   }
 }
