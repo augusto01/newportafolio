@@ -1,24 +1,30 @@
 import React from 'react';
-import '../styles/content.css';
+import '../styles/Content.css';
+import Navbar from './Navbar';
 
 const Content = () => {
   return (
     <div className="content-container">
-      <nav className="content-nav">
-        <a href="#projects">Proyectos</a>
-        <a href="#experience">Experiencia</a>
-        <a href="#education">Formación</a>
-        <a href="#contact">Contacto</a>
-      </nav>
+      
 
       <div className="content-main">
-        <h2>Bienvenido a mi portafolio</h2>
-        <p>
-          Aquí podés encontrar mis proyectos, experiencia, educación y formas de contacto. 
-          ¡Gracias por visitar!
+        <div className='title'>
+          <h1 className='title'>Almirón Pedro Augusto</h1>
+          <h2>Analista y Programador de Sistemas</h2>
+          <br />
+        </div>
+        
+        <p className='encabezado'>
+          Bienvenido a mi portafolio. Aquí encontrarás algunos de mis proyectos,
+          información sobre mí y formas de contactarme.
         </p>
+
+        
       </div>
-    </div>
+            <Navbar/>
+      </div>
+
+    
   );
 };
 

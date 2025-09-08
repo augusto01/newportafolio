@@ -1,25 +1,115 @@
+/* Navbar transparente y profesional */
 .navbar {
-  background-color: #16213e;
-  padding: 1.5rem 0;
-  position: fixed;
+  background: transparent !important;
+  margin-top: 2rem;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif; /* Fuente congruente con el sistema */
+}
+
+/* Animación del navbar al cargar */
+.animated-navbar {
+  animation: slideDown 0.6s ease forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Links */
+.navbar .nav-link {
+  font-weight: 500;
+  color: #c9d1d9 !important; /* gris claro */
+  margin: 0 0.7rem;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #58a6ff; /* azul cyan */
+  transition: width 0.3s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+  color: #58a6ff !important;
+  transform: translateY(-2px);
+}
+
+.navbar .nav-link:hover::after {
   width: 100%;
-  top: 0;
-  z-index: 100;
 }
 
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-links a {
-  color: #e94560;
-  text-decoration: none;
+/* Botón CV centrado debajo */
+.cv-button {
+  border-radius: 25px;
   font-weight: 600;
-  transition: color 0.3s;
+  color: #0d1117; /* gris oscuro */
+  border-color: #58a6ff;
+  background-color: #58a6ff;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 1s 0.5s forwards;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.nav-links a:hover {
-  color: #fff;
+.cv-button:hover {
+  background-color: #0d1117;
+  color: #58a6ff;
+  border-color: #58a6ff;
+}
+
+/* Fade-in del botón */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Hamburguesa minimalista */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: none;
+  width: 25px;
+  height: 2px;
+  background-color: #c9d1d9;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  background-color: #c9d1d9;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon::before {
+  top: -8px;
+}
+
+.navbar-toggler-icon::after {
+  top: 8px;
 }
