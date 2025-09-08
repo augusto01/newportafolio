@@ -23,8 +23,8 @@ const Navbar = () => {
         <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul className="navbar-nav align-items-center">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Inicio
+              <Link className="nav-link" to="/about">
+                Sobre Mi
               </Link>
             </li>
             <li className="nav-item">

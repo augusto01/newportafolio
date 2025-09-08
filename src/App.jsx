@@ -7,6 +7,7 @@ import Experiencia from "./components/Experiencia";
 import Formacion from "./components/Formacion";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
+import About from "./components/About";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/proyectos" element={<Proyectos />} />
           <Route path="/experiencia" element={<Experiencia />} />
           <Route path="/formacion" element={<Formacion />} />
