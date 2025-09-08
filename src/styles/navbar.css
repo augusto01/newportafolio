@@ -56,9 +56,10 @@
 .cv-button {
   border-radius: 25px;
   font-weight: 600;
-  color: #0d1117; /* gris oscuro */
+  background-color: #0d1117;
+  color: #58a6ff;
   border-color: #58a6ff;
-  background-color: #58a6ff;
+  
   transition: all 0.3s ease;
   opacity: 0;
   animation: fadeIn 1s 0.5s forwards;
@@ -66,9 +67,9 @@
 }
 
 .cv-button:hover {
-  background-color: #0d1117;
-  color: #58a6ff;
+  color: #0d1117; /* gris oscuro */
   border-color: #58a6ff;
+  background-color: #58a6ff;
 }
 
 /* Fade-in del botón */
