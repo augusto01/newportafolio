@@ -58,16 +58,17 @@ const Content = () => {
         <PillNav
         logo={<Logo />}
           items={[
-            { label: 'Home', href: '/' },
-            { label: 'About', href: '/about' },
-            { label: 'Projects', href: '/projects' },
+            { label: 'Sobre Mi ', href: '/about' },
+            { label: 'Experiencia', href: '/projects' },
+            { label: 'Proyectos', href: '/contact' },
+            { label: 'Formacion', href: '/contact' },
             { label: 'Contact', href: '/contact' }
           ]}
           activeHref="/"
           className="custom-nav"
           ease="power2.out"
-          baseColor="#051f57ff"            // texto normal
-          pillTextColor="#7CFF00"        // texto base
+          baseColor="#05021bff"            // texto normal
+          pillTextColor="#757570ff"        // texto base
           pillColor="#05021bff"            // fondo hover / active
           hoveredPillTextColor="#7CFF00" // texto sobre pill
 
