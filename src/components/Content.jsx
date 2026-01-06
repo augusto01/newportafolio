@@ -5,7 +5,8 @@ import SplitText from './SplitText';
 import LiquidEther from './UI/LiquidEther';
 import TextType from './UI/TextType';
 import PillNav from './UI/PillNav';
-import Logo from './UI/Logo';
+import logo from './UI/Logo';
+import { href } from 'react-router-dom';
 
 const Content = () => {
   return (
@@ -56,23 +57,24 @@ const Content = () => {
 
     
         <PillNav
-        logo={<Logo />}
+          logo={<logo />}
           items={[
-            { label: 'Sobre Mi ', href: '/about' },
-            { label: 'Experiencia', href: '/projects' },
-            { label: 'Proyectos', href: '/contact' },
-            { label: 'Formacion', href: '/contact' },
-            { label: 'Contact', href: '/contact' }
+            { label: 'Inicio', href: '/' },
+            { label: 'Sobre Mi', href: '/about' },
+            { label: 'Experiencia', href: '/experiencia' },
+            { label: 'Proyectos', href: '/projects' },
+            { label: 'Contacto', href: '/contact' }
           ]}
-          activeHref="/"
+          activeHref="/"   
           className="custom-nav"
           ease="power2.out"
-          baseColor="#05021bff"            // texto normal
-          pillTextColor="#757570ff"        // texto base
-          pillColor="#05021bff"            // fondo hover / active
-          hoveredPillTextColor="#7CFF00" // texto sobre pill
-
+          baseColor="#05021b"
+          pillTextColor="#757570"
+          pillColor="#05021b"
+          hoveredPillTextColor="#7CFF00"
         />
+
+
 
 
 

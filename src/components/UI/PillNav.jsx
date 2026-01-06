@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import '../../styles/PillNav.css';
-
 const PillNav = ({
   logo,
   logoAlt = 'Logo',
@@ -236,13 +235,8 @@ const PillNav = ({
               logoRef.current = el;
             }}
           >
-                {typeof logo === 'string' ? (
-                <img src={logo} alt={logoAlt} ref={logoImgRef} />
-                ) : (
-                <span ref={logoImgRef} className="pill-logo-jsx">
-                    {logo}
-                </span>
-                )}          </Link>
+            <img src={logo} alt={logoAlt} ref={logoImgRef} />
+          </Link>
         ) : (
           <a
             className="pill-logo"

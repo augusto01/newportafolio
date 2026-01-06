@@ -1,11 +1,29 @@
 import React from "react";
 import "../styles/About.css";
 import profileImage from "../assets/img/me.jpeg"; // reemplazá con tu foto
-import { Navbar } from "react-bootstrap";
+import PillNav from "./UI/PillNav";
+import Logo from './UI/Logo';
+
 
 const About = () => {
   return (
     <>
+    <PillNav
+        logo={<Logo />}
+        items={[
+          { label: 'Inicio', href: '/' },          // 🔑 el logo lleva acá
+          { label: 'Sobre Mi', href: '/about' },
+          { label: 'Experiencia', href: '/experiencia' },
+          { label: 'Proyectos', href: '/projects' },
+          { label: 'Contacto', href: '/contact' }
+        ]}
+        className="custom-nav"
+        ease="power2.out"
+        baseColor="#05021bff"
+        pillTextColor="#757570ff"
+        pillColor="#05021bff"
+        hoveredPillTextColor="#7CFF00"
+      />
     <section id="about" className="about-section">
       <div className="container">
         <div className="row align-items-center">
