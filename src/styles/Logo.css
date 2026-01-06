@@ -1,0 +1,17 @@
+.logo {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  color: #7CFF00;
+  cursor: pointer;
+
+  text-shadow: 0 0 6px rgba(124, 255, 0, 0.4);
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(124, 255, 0, 0.65);
+}

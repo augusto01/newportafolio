@@ -1,28 +1,65 @@
-/* Contenedor principal */
+/* =========================
+   CONTENEDOR GENERAL
+========================= */
 .content-container {
+  position: relative;
   width: 100%;
   min-height: 100vh;
+  overflow: hidden;
+
+  background-color: #0d1117;
+  font-family: 'Roboto', sans-serif;
+  color: #c9d1d9;
+}
+
+/* =========================
+   BACKGROUND (LiquidEther)
+========================= */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Overlay para legibilidad */
+.hero-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 17, 23, 0.55);
+}
+
+/* =========================
+   CONTENIDO SUPERIOR
+========================= */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #0d1117; /* fondo gris oscuro profesional */
+  justify-content: center;
+
   padding: 2rem;
-  font-family: 'Roboto', sans-serif;
-  color: #c9d1d9; /* texto gris claro */
   text-align: center;
 }
 
-/* Títulos */
-.title h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  color: #58a6ff; /* azul cyan profesional */
-  margin-bottom: 0.5rem;
-  opacity: 0;
-  animation: slideDown 0.8s ease forwards;
+/* =========================
+   TITULOS
+========================= */
+
+.title h1,
+.title h1 span {
+  color: lime;
+  font-family: 'IBM Plex Mono', monospace;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
+
 
 .title h2 {
   font-family: 'Montserrat', sans-serif;
@@ -30,50 +67,44 @@
   font-weight: 600;
   color: #8b949e;
   margin-bottom: 1rem;
-  opacity: 0;
-  animation: slideDown 0.8s ease forwards;
-  animation-delay: 0.2s;
 }
 
-/* Animación slide-down para títulos */
-@keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Párrafo de bienvenida */
-.encabezado {
+/* =========================
+   TEXTO DESCRIPTIVO
+========================= */
+.hero-content p {
   font-size: 1.1rem;
   line-height: 1.6;
   max-width: 650px;
   margin-top: 1rem;
   color: #c9d1d9;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 0.5s;
 }
 
-/* Animación fade-in para párrafo */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Navbar incluido en Content */
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
-  margin-top: 2rem;
+  margin-top: 0;
   width: 100%;
 }
 
-/* Separación de navbar en móviles */
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 768px) {
-  .navbar .cv-button {
-    margin-top: 1rem;
+  .title h1 {
+    font-size: 2.2rem;
+  }
+
+  .title h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    margin-top: 2rem;
   }
 }

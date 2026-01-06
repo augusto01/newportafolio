@@ -1,7 +1,7 @@
 /* Navbar transparente y profesional */
 .navbar {
   background: transparent !important;
-  margin-top: 2rem;
+  margin-top: 2.5rem !important;
   transition: all 0.3s ease;
   font-family: 'Montserrat', sans-serif; /* Fuente congruente con el sistema */
 }
