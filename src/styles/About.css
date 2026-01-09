@@ -66,6 +66,25 @@
   background: rgba(124, 255, 0, 0.05);
 }
 
+.skills-wrapper {
+  margin-top: 30px;
+}
+
+.skills-subtitle {
+  color: #7CFF00; /* Tu verde lima */
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* Espaciado opcional entre los dos carruseles */
+.mt-4 {
+  margin-top: 2rem !important;
+}
+
 /* RESPONSIVIDAD */
 @media (max-width: 991px) {
   .about-section {

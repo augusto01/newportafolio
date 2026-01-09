@@ -1,0 +1,119 @@
+/* Contenedor principal (El que corta el contenido y da el efecto de desvanecido) */
+.logo-wall-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  position: relative;
+  /* Máscara para bordes suaves */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+}
+
+/* El carril que se mueve */
+.logo-wall-track {
+  display: flex;
+  width: max-content;
+  flex-direction: row; /* Fuerza que sea horizontal */
+}
+
+/* Animación */
+.logo-wall-content {
+  display: flex;
+  gap: 40px;
+  animation: scroll linear infinite;
+}
+
+/* Direcciones */
+.logo-wall-track.left .logo-wall-content {
+  animation-name: scroll-left;
+}
+
+.logo-wall-track.right .logo-wall-content {
+  animation-name: scroll-right;
+}
+
+/* Pausa al pasar el mouse */
+.logo-wall-track.hover-pause:hover .logo-wall-content {
+  animation-play-state: paused;
+}
+
+.logo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+
+.logo-item img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  transition: 0.3s ease;
+  opacity: 0.7;
+}
+
+.logo-item:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Keyframes */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Los iconos normales siguen grises */
+.logo-item img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  transition: 0.4s ease;
+  opacity: 0.5;
+}
+
+/* ESTILO PARA EL STACK MERN (DESTACADOS) */
+.logo-item.featured-icon img {
+  filter: grayscale(0%); /* Siempre en color */
+  opacity: 1; /* Siempre brillantes */
+  transform: scale(1.1); /* Ligeramente más grandes */
+  /* Sombra de resplandor lima */
+  filter: drop-shadow(0 0 8px rgba(124, 255, 0, 0.6)); 
+}
+
+/* Efecto al pasar el mouse sobre los normales */
+.logo-item:not(.featured-icon):hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Animación sutil de latido para los destacados */
+.logo-item.featured-icon {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
