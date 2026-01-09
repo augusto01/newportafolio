@@ -44,7 +44,8 @@
 /* Hover */
 .cv-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(183, 255, 0, 0.45);
+  box-shadow: 0 0 25px rgba(140, 192, 146, 0.45);
+  background-color: #06e711 !important;
 }
 
 /* Texto encima del borde */
@@ -70,3 +71,4 @@
     font-size: 0.85rem;
   }
 }
+

@@ -1,57 +1,96 @@
 .about-section {
-  padding: 4rem 0;
-  background: #0f0f0f; /* fondo elegante */
-  color: #f5f5f5;
-  font-family: "Roboto", sans-serif;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.profile-img {
-  max-width: 220px;
-  border: 4px solid #00adb5;
-  transition: transform 0.4s ease;
-}
-
-.profile-img:hover {
-  transform: scale(1.05);
+  padding: 100px 0;
+  background-color: #05021b; /* Color de fondo oscuro acorde a tu nav */
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .about-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #00adb5;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #7CFF00; /* Verde Lima */
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .about-text {
   font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 30px;
 }
 
 .about-list li {
-  margin-bottom: 0.6rem;
+  margin-bottom: 12px;
   font-size: 1rem;
+  color: #eee;
 }
 
-.skills {
-  margin-top: 2rem;
+.about-list strong {
+  color: #7CFF00;
+  margin-right: 5px;
 }
 
 .skills-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-  color: #00adb5;
+  margin-top: 40px;
+  color: #7CFF00;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(124, 255, 0, 0.2);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .skills-list li {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
 }
 
-/* Animación */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.skills-list li:hover {
+  border-color: #7CFF00;
+  transform: translateY(-3px);
+  background: rgba(124, 255, 0, 0.05);
+}
+
+/* RESPONSIVIDAD */
+@media (max-width: 991px) {
+  .about-section {
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+
+  .divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .skills-list {
+    grid-template-columns: 1fr;
+  }
+
+  .about-list li {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+  }
 }

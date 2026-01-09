@@ -1,14 +1,13 @@
 import React from "react";
 import "../styles/About.css";
-import profileImage from "../assets/img/me.jpeg"; // reemplazá con tu foto
 import PillNav from "./UI/PillNav";
+import FlipCard from "./UI/FlipCard";
 import Logo from './UI/Logo';
-
 
 const About = () => {
   return (
     <>
-    <PillNav
+      <PillNav
         logo={<Logo />}
         items={[
           { label: 'Inicio', href: '/' },          
@@ -25,53 +24,48 @@ const About = () => {
         hoveredPillTextColor="#7CFF00"
       />
       
-    <section id="about" className="about-section">
-      <div className="container">
-        <div className="row align-items-center">
-          
-          {/* Imagen */}
-          <div className="col-md-4 text-center mb-4 mb-md-0">
-            <img 
-              src={profileImage} 
-              alt="Perfil" 
-              className="img-fluid rounded-circle shadow profile-img"
-            />
-          </div>
-
-          {/* Texto */}
-          <div className="col-md-8">
-            <h2 className="about-title">Sobre Mí</h2>
-            <p className="about-text">
-              Soy <strong>Almirón Pedro Augusto</strong>, analista y programador de sistemas apasionado por la
-              tecnología, el desarrollo web y la ciberseguridad. Me destaco por mi capacidad
-              de resolver problemas, aprender rápido y trabajar en equipo.
-            </p>
-
-            <ul className="list-unstyled about-list">
-              <li><i className="fas fa-user me-2"></i><strong>Nombre:</strong> Almirón Pedro Augusto</li>
-              <li><i className="fas fa-birthday-cake me-2"></i><strong>Fecha de nacimiento:</strong> 20 de Enero, 2000</li>
-              <li><i className="fas fa-envelope me-2"></i><strong>Email:</strong> augustoalmiron@example.com</li>
-              <li><i className="fas fa-phone me-2"></i><strong>Teléfono:</strong> +54 3794 123456</li>
-              <li><i className="fas fa-map-marker-alt me-2"></i><strong>Ubicación:</strong> Corrientes, Argentina</li>
-            </ul>
-
-            <div className="skills">
-              <h4 className="skills-title">Cualidades</h4>
-              <ul className="skills-list">
-                <li>💡 Pensamiento crítico y analítico</li>
-                <li>⚡ Desarrollo web con React y Node.js</li>
-                <li>🔒 Interés en Ciberseguridad</li>
-                <li>🤝 Trabajo en equipo y comunicación</li>
-                <li>🚀 Motivación para aprender y mejorar</li>
-              </ul>
+      <section id="about" className="about-section">
+        <div className="container">
+          <div className="row align-items-center">
+            
+            {/* LADO IZQUIERDO: La Tarjeta */}
+            <div className="col-lg-4 d-flex justify-content-center mb-5 mb-lg-0">
+              <FlipCard />
             </div>
+
+            {/* LADO DERECHO: El Texto */}
+            <div className="col-lg-8">
+              <h2 className="about-title">Sobre Mí</h2>
+              <p className="about-text">
+                Soy <strong>Almirón Pedro Augusto</strong>, analista y programador de sistemas apasionado por la
+                tecnología, el desarrollo web y la ciberseguridad. Me destaco por mi capacidad
+                de resolver problemas, aprender rápido y trabajar en equipo.
+              </p>
+
+              <ul className="list-unstyled about-list">
+                <li><i className="fas fa-user me-2"></i><strong>Nombre:</strong> Almirón Pedro Augusto</li>
+                <li><i className="fas fa-birthday-cake me-2"></i><strong>Fecha de nacimiento:</strong> 20 de Enero, 2000</li>
+                <li><i className="fas fa-envelope me-2"></i><strong>Email:</strong> augustoalmiron@example.com</li>
+                <li><i className="fas fa-phone me-2"></i><strong>Teléfono:</strong> +54 3794 123456</li>
+                <li><i className="fas fa-map-marker-alt me-2"></i><strong>Ubicación:</strong> Corrientes, Argentina</li>
+              </ul>
+
+              <div className="skills">
+                <h4 className="skills-title">Cualidades</h4>
+                <ul className="skills-list">
+                  <li>💡 Pensamiento crítico y analítico</li>
+                  <li>⚡ Desarrollo web con React y Node.js</li>
+                  <li>🔒 Interés en Ciberseguridad</li>
+                  <li>🤝 Trabajo en equipo y comunicación</li>
+                  <li>🚀 Motivación para aprender y mejorar</li>
+                </ul>
+              </div>
+            </div>
+
           </div>
         </div>
-      </div>
-    </section>
-    
+      </section>
     </>
-    
   );
 };
 

@@ -1,0 +1,141 @@
+:root {
+  --lime: limegreen;
+  --dark-bg: #080808;
+  --card-bg: #121212;
+}
+
+.card-scene {
+  width: 320px;
+  height: 426px; 
+  perspective: 1200px;
+  margin: 40px auto;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  background: var(--lime); 
+  overflow: hidden; /* Evita que el contenido se salga */
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* CONTENEDOR NEGRO */
+.content-container {
+  position: absolute;
+  inset: 2px;
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lime-title {
+  color: var(--lime);
+  font-size: 1.4rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.divider {
+  width: 35px;
+  height: 2px;
+  background: var(--lime);
+  margin: 15px 0 20px 0;
+}
+
+/* LISTA DE REDES Y BOTÓN */
+.info-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.contact-link:hover {
+  background: rgba(204, 255, 0, 0.1);
+  color: var(--lime);
+}
+
+.contact-link svg { flex-shrink: 0; }
+
+/* EL BOTÓN VOLVER (DEBAJO DE LAS REDES) */
+.flip-btn-back {
+  margin-top: 10px; /* Separación de la última red social */
+  background: transparent;
+  border: 1px solid var(--lime);
+  color: var(--lime);
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%; /* Para que ocupe el mismo ancho que los links */
+}
+
+.flip-btn-back:hover {
+  background: var(--lime);
+  color: black;
+}
+
+/* FRONTAL */
+.photo-wrapper {
+  position: absolute;
+  inset: 2px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.main-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.button-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-btn {
+  background: var(--lime);
+  color: black;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 900;
+  cursor: pointer;
+}
