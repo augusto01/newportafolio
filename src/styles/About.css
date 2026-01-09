@@ -1,89 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --lime: #7CFF00;
+}
+
 .about-section {
   padding: 100px 0;
-  background-color: #05021b; /* Color de fondo oscuro acorde a tu nav */
+  background-color: #05021b;
   color: #fff;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  font-family: var(--font-main);
 }
 
 .about-title {
-  font-size: 2.5rem;
+  font-family: var(--font-main);
+  font-size: 3.5rem;
   font-weight: 800;
-  color: #7CFF00; /* Verde Lima */
-  margin-bottom: 20px;
+  letter-spacing: -2px;
+  color: var(--lime);
   text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 25px;
 }
 
 .about-text {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #ccc;
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #a0a0ab;
   margin-bottom: 30px;
 }
 
+.about-text strong {
+  font-weight: 600;
+  color: #fff;
+}
+
 .about-list li {
+  font-family: var(--font-mono);
   margin-bottom: 12px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #eee;
+  display: flex;
+  align-items: center;
 }
 
 .about-list strong {
-  color: #7CFF00;
-  margin-right: 5px;
-}
-
-.skills-title {
-  margin-top: 40px;
-  color: #7CFF00;
+  color: var(--lime);
+  margin-right: 8px;
   font-weight: 700;
-  border-bottom: 1px solid rgba(124, 255, 0, 0.2);
-  display: inline-block;
-  padding-bottom: 5px;
-}
-
-.skills-list {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.skills-list li {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: 0.3s;
-}
-
-.skills-list li:hover {
-  border-color: #7CFF00;
-  transform: translateY(-3px);
-  background: rgba(124, 255, 0, 0.05);
-}
-
-.skills-wrapper {
-  margin-top: 30px;
 }
 
 .skills-subtitle {
-  color: #7CFF00; /* Tu verde lima */
-  font-size: 1.1rem;
+  font-family: var(--font-mono);
+  color: var(--lime);
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-  opacity: 0.9;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  border-left: 3px solid var(--lime);
+  padding-left: 12px;
 }
 
-/* Espaciado opcional entre los dos carruseles */
-.mt-4 {
-  margin-top: 2rem !important;
+.skills-wrapper {
+  margin-top: 35px;
 }
+
+.mt-4 {
+  margin-top: 2.5rem !important;
+}
+
+
 
 /* RESPONSIVIDAD */
 @media (max-width: 991px) {
@@ -93,23 +86,20 @@
   }
 
   .about-title {
-    font-size: 2rem;
-    margin-top: 20px;
-  }
-
-  .divider {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .skills-list {
-    grid-template-columns: 1fr;
+    font-size: 2.5rem;
+    letter-spacing: -1px;
   }
 
   .about-list li {
+    justify-content: center;
     text-align: left;
+  }
+  
+  .skills-subtitle {
+    border-left: none;
+    border-bottom: 2px solid var(--lime);
     display: inline-block;
-    width: 100%;
-    max-width: 400px;
+    padding-left: 0;
+    padding-bottom: 5px;
   }
 }

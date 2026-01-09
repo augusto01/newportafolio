@@ -1,0 +1,113 @@
+.recruiter-card {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  background: rgba(10, 10, 25, 0.6);
+  border: 1px solid rgba(124, 255, 0, 0.2);
+  border-radius: 24px;
+  padding: 24px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.recruiter-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(124, 255, 0, 0.6);
+  box-shadow: 0 15px 50px rgba(124, 255, 0, 0.1);
+}
+
+.recruiter-badge {
+  background: rgba(124, 255, 0, 0.1);
+  color: #7CFF00;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(124, 255, 0, 0.3);
+}
+
+.recruiter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Punto palpitante de "En Vivo / Nuevo" */
+.pulse-icon {
+  width: 8px;
+  height: 8px;
+  background-color: #7CFF00;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(124, 255, 0, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(124, 255, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(124, 255, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(124, 255, 0, 0); }
+}
+
+.recruiter-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.recruiter-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #a0a0ab;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.recruiter-text strong {
+  color: #fff;
+  border-bottom: 1px solid #7CFF00;
+}
+
+.recruiter-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #7CFF00;
+  color: #05021b;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+
+.recruiter-cta:hover {
+  background: #fff;
+  transform: scale(1.02);
+}
+
+.btn-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: #05021b;
+}
+
+.recruiter-footer {
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+  opacity: 0.5;
+}
+
+.footer-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #fff;
+}

@@ -1,110 +1,98 @@
-/* =========================
-   CONTENEDOR GENERAL
-========================= */
+/* RESET PARA QUE NADA CORTE EL FONDO */
+html, body, #root {
+  background-color: #05021b !important; /* Color base sólido */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* Eliminamos el height fijo para que el fondo siga si hay más contenido */
+  min-height: 100vh; 
+}
+
 .content-container {
-  position: relative;
   width: 100%;
   min-height: 100vh;
-  overflow: hidden;
-
-  background-color: #0d1117;
-  font-family: 'Roboto', sans-serif;
-  color: #c9d1d9;
-}
-
-/* =========================
-   BACKGROUND (LiquidEther)
-========================= */
-.hero-background {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Overlay para legibilidad */
-.hero-background::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(13, 17, 23, 0.55);
-}
-
-/* =========================
-   CONTENIDO SUPERIOR
-========================= */
-.hero-content {
+  background-color: #05021b !important;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  z-index: 2;
-  min-height: 100vh;
+  /* IMPORTANTE: Permitir que los elementos hijos sobresalgan si es necesario */
+  overflow: visible; 
+}
 
+.hero-main {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* Padding superior para el Nav y MUCHO padding inferior para que la card no se corte */
+  padding: 120px 20px 100px 20px; 
+  z-index: 2;
+}
 
-  padding: 2rem;
+.hero-text-content {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-/* =========================
-   TITULOS
-========================= */
-
-.title h1,
-.title h1 span {
-  color: lime;
-  font-family: 'IBM Plex Mono', monospace;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
+.title-wrapper {
+  margin-bottom: 20px;
 }
 
-
-.title h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #8b949e;
-  margin-bottom: 1rem;
+.main-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  color: #7CFF00;
+  line-height: 1.1;
+  margin-bottom: 10px;
 }
 
-/* =========================
-   TEXTO DESCRIPTIVO
-========================= */
-.hero-content p {
-  font-size: 1.1rem;
+.sub-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  opacity: 0.8;
+}
+
+.hero-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  color: #a0a0ab;
+  max-width: 600px;
+  margin: 20px auto 40px auto;
   line-height: 1.6;
-  max-width: 650px;
-  margin-top: 1rem;
-  color: #c9d1d9;
 }
 
-/* =========================
-   NAVBAR
-========================= */
-.navbar {
-  margin-top: 0;
+/* BOTONES Y CARD */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
   width: 100%;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 768px) {
-  .title h1 {
-    font-size: 2.2rem;
-  }
+.home-recruiter-box {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  /* Evita que el grid interno de la card se corte */
+  overflow: visible; 
+}
 
-  .title h2 {
-    font-size: 1.4rem;
-  }
+/* Animaciones */
+.reveal-text { opacity: 0; animation: fadeInUp 0.8s ease forwards; animation-delay: 1.2s; }
+.reveal-text-delay { opacity: 0; animation: fadeInUp 0.8s ease forwards; animation-delay: 1.8s; }
+.reveal-buttons { opacity: 0; animation: fadeInUp 0.8s ease forwards; animation-delay: 2.3s; }
 
-  .hero-content p {
-    font-size: 1rem;
-  }
-
-  .navbar {
-    margin-top: 2rem;
-  }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
