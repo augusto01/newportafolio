@@ -5,7 +5,9 @@ import SplitText from './SplitText';
 import LiquidEther from './UI/LiquidEther';
 import TextType from './UI/TextType';
 import PillNav from './UI/PillNav';
-import logo from './UI/Logo';
+import SocialLinks from '../components/UI/SocialLinks';
+import DownloadCVButton from './UI/DownloadCvButton';
+import Logo from './UI/Logo';
 import { href } from 'react-router-dom';
 
 const Content = () => {
@@ -48,21 +50,23 @@ const Content = () => {
         </div>
 
         <SplitText
-          text="Bienvenido a mi portafolio. Aquí encontrarás algunos de mis proyectos, información sobre mí y formas de contactarme."
+          text="Soy Desarrollador Full Stack con sólida formación en Sistemas de Información y experiencia construyendo aplicaciones web modernas, escalables y orientadas al negocio.
+          Trabajo principalmente con React, Node.js, MongoDB y Express, desarrollando tanto interfaces atractivas como APIs robustas."
           tag="p"
           splitType="lines"
           delay={80}
           textAlign="center"
         />
 
+
     
         <PillNav
-          logo={<logo />}
           items={[
             { label: 'Inicio', href: '/' },
             { label: 'Sobre Mi', href: '/about' },
             { label: 'Experiencia', href: '/experiencia' },
             { label: 'Proyectos', href: '/projects' },
+            { label: 'Formación', href: '/formacion' },
             { label: 'Contacto', href: '/contact' }
           ]}
           activeHref="/"   
@@ -73,6 +77,11 @@ const Content = () => {
           pillColor="#05021b"
           hoveredPillTextColor="#7CFF00"
         />
+
+        <SocialLinks />
+        <DownloadCVButton />
+
+        
 
 
 

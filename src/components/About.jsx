@@ -11,7 +11,7 @@ const About = () => {
     <PillNav
         logo={<Logo />}
         items={[
-          { label: 'Inicio', href: '/' },          // 🔑 el logo lleva acá
+          { label: 'Inicio', href: '/' },          
           { label: 'Sobre Mi', href: '/about' },
           { label: 'Experiencia', href: '/experiencia' },
           { label: 'Proyectos', href: '/projects' },
@@ -24,6 +24,7 @@ const About = () => {
         pillColor="#05021bff"
         hoveredPillTextColor="#7CFF00"
       />
+      
     <section id="about" className="about-section">
       <div className="container">
         <div className="row align-items-center">

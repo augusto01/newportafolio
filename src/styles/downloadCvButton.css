@@ -1,0 +1,72 @@
+.cv-button {
+  position: relative;
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  margin-top: 2rem;
+
+  color: #26ff00; /* verde lima */
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  background: transparent;
+  border-radius: 999px;
+  text-decoration: none;
+  overflow: hidden;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Glow base */
+.cv-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    120deg,
+    #07e84b,
+    green,
+    #06e711
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  animation: borderFlow 3s linear infinite;
+}
+
+/* Hover */
+.cv-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(183, 255, 0, 0.45);
+}
+
+/* Texto encima del borde */
+.cv-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animación del borde */
+@keyframes borderFlow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .cv-button {
+    padding: 0.75rem 1.8rem;
+    font-size: 0.85rem;
+  }
+}

@@ -7,7 +7,7 @@ import Logo from './UI/Logo'
 const Experiencia = () => {
 
   return (
-    <div className="experiencia-page">
+  <div className="experiencia-page">
       
   <PillNav
   logo={<Logo />}
@@ -18,7 +18,7 @@ const Experiencia = () => {
     { label: 'Proyectos', href: '/projects' },
     { label: 'Contacto', href: '/contact' }
   ]}
-  activeHref="/experiencia"   // 🔥 SOLO ESTO
+  activeHref="/experiencia"   
   className="custom-nav"
   ease="power2.out"
   baseColor="#05021b"
