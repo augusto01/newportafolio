@@ -1,0 +1,209 @@
+/* Contenedor principal de Bootstrap */
+.tech-modal {
+    background-color: #0a081f !important;
+    border: 1px solid rgba(124, 255, 0, 0.3) !important;
+    border-radius: 24px !important;
+    overflow: hidden !important; /* Corta la imagen en las esquinas */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor de la imagen */
+.modal-header-custom {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    /* Forzamos el redondeado superior para asegurar compatibilidad */
+    border-radius: 24px 24px 0 0; 
+}
+
+.modal-top-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* Elimina espacios vacíos debajo de la imagen */
+}
+
+/* Botón cerrar flotante */
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(124, 255, 0, 0.4);
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    background: #7CFF00;
+    color: #05021b;
+    transform: rotate(90deg);
+}
+
+/* Cuerpo del modal */
+.modal-body-custom {
+    padding: 30px !important;
+    color: white;
+    background: #0a081f;
+}
+
+.modal-project-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.rocket-icon {
+    color: #7CFF00;
+    margin-left: 10px;
+}
+
+.modal-description {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #a0a0ab;
+    line-height: 1.6;
+}
+
+/* Secciones de tecnología */
+.tech-label {
+    font-family: 'JetBrains Mono', monospace;
+    color: #7CFF00;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-top: 25px;
+    letter-spacing: 1px;
+}
+
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.tech-item {
+    background: rgba(124, 255, 0, 0.08);
+    padding: 8px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #7CFF00;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    border: 1px solid rgba(124, 255, 0, 0.1);
+}
+
+/* Acciones finales */
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.btn-code {
+    background: #7CFF00;
+    color: #05021b;
+    padding: 12px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.btn-code:hover {
+    background: #62cc00;
+    transform: translateY(-2px);
+    color: #05021b;
+}
+
+.btn-demo {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.btn-demo:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.modal-project-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    color: #FFFFFF;
+}
+
+.modal-description {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    color: #a0a0ab; /* Gris azulado suave */
+    font-size: 0.95rem;
+}
+
+.tech-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: #7CFF00;
+    letter-spacing: 1px;
+}
+
+.tech-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.8rem;
+    /* Un toque de borde para que parezca un chip tecnológico */
+    border: 1px solid rgba(124, 255, 0, 0.2);
+}
+
+.btn-code {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+.btn-demo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.btn-demo {
+    background: transparent;
+    border: 1px solid #7CFF00; /* Borde verde neón */
+    color: #7CFF00;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-demo:hover {
+    background: rgba(124, 255, 0, 0.1); /* Fondo sutil al pasar el mouse */
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(124, 255, 0, 0.2);
+}

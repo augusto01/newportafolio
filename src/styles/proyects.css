@@ -1,75 +1,212 @@
-.proyectos-container {
-  padding: 2rem 0;
+/* ==========================================================================
+   CONFIGURACIÓN GENERAL DE LA PÁGINA
+   ========================================================================== */
+.projects-page {
+    background-color: #05021b;
+    min-height: 100vh;
+    color: white;
+    padding-top: 120px; /* Espacio para el Nav */
+    padding-bottom: 60px;
 }
 
-.proyecto-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: none;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+/* --- TÍTULO PRINCIPAL --- */
+.projects-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFFFFF;
 }
 
-.proyecto-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+.projects-title span { 
+    color: #7CFF00; 
+    font-family: 'JetBrains Mono', monospace; 
 }
 
-.image-container {
-  position: relative;
-  overflow: hidden;
-  height: 200px;
+/* ==========================================================================
+   FILTROS
+   ========================================================================== */
+.filter-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
 }
 
-.image-container img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.5s ease;
+.filter-btn {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888891;
+    padding: 8px 22px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-.proyecto-card:hover .image-container img {
-  transform: scale(1.05);
+.filter-btn:hover, .filter-btn.active {
+    background: #7CFF00;
+    color: #05021b;
+    border-color: #7CFF00;
+    transform: translateY(-2px);
 }
 
-.categoria-badge {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
+/* ==========================================================================
+   TARJETAS DE PROYECTOS (GRID)
+   ========================================================================== */
+.project-glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.tecnologias-container {
-  margin-top: auto;
+.project-glass-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(124, 255, 0, 0.5);
+    background: rgba(124, 255, 0, 0.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
-.tecnologias-list {
-  margin-top: 0.5rem;
+/* --- CONTENEDOR DE IMAGEN EN CARD --- */
+.card-image-box {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden; /* IMPORTANTE: Mantiene la imagen dentro */
+    margin-bottom: 15px;
 }
 
-.filter-badge {
-  cursor: pointer;
-  padding: 8px 15px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
+.card-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
 }
 
-.filter-badge:hover {
-  transform: scale(1.05);
+.project-glass-card:hover .card-image-box img {
+    transform: scale(1.1);
 }
 
-/* Responsividad */
+/* --- OVERLAY DE LA CARD --- */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(124, 255, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: #05021b;
+    font-weight: 800;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: 1px;
+    border-radius: 15px;
+}
+
+.project-glass-card:hover .card-overlay {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   INFORMACIÓN Y TIPOGRAFÍA DE LA CARD
+   ========================================================================== */
+.card-info {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-category {
+    font-family: 'JetBrains Mono', monospace !important;
+    color: #7CFF00;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.card-project-title {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.tech-dots {
+    display: flex;
+    gap: 12px;
+    color: rgba(124, 255, 0, 0.7);
+    font-size: 1.2rem;
+    margin-top: auto; /* Alinea los iconos al fondo */
+    padding-top: 10px;
+}
+
+/* --- ESTILOS DE LA INTRO --- */
+.hero-badge {
+    display: inline-block;
+    background: rgba(124, 255, 0, 0.1);
+    color: #7CFF00;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(124, 255, 0, 0.2);
+}
+
+.projects-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+}
+
+.projects-subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.15rem;
+    color: #a0a0ab;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.projects-subtitle strong {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* Efecto hover extra en el badge */
+.hero-badge:hover {
+    background: rgba(124, 255, 0, 0.2);
+    box-shadow: 0 0 15px rgba(124, 255, 0, 0.1);
+}
+
+/* --- AJUSTE RESPONSIVO --- */
 @media (max-width: 768px) {
-  .proyectos-container {
-    padding: 1rem;
-  }
-  
-  .image-container {
-    height: 180px;
-  }
+    .projects-title {
+        font-size: 2.5rem;
+    }
+    
+    .card-image-box {
+        height: 180px;
+    }
 }

@@ -1,0 +1,78 @@
+/* RESET DE FONDO PARA CONTINUIDAD TOTAL */
+:global(html), :global(body) {
+  background-color: #05021b !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.contact-page-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #05021b;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 80px; /* Espacio para el Nav */
+}
+
+.contact-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 100px 20px;
+  z-index: 2;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.contact-title span {
+  color: #7CFF00; /* Tu verde característico */
+}
+
+.contact-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  color: #a0a0ab;
+  font-size: 1rem;
+  max-width: 500px;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 550px; /* Ancho ideal para el formulario tipo terminal */
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 2.2rem;
+  }
+  .contact-main-content {
+    padding-top: 20px;
+  }
+}
