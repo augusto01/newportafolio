@@ -5,28 +5,13 @@ import PillNav from './UI/PillNav';
 import SocialLinks from '../components/UI/SocialLinks';
 import DownloadCVButton from './UI/DownloadCvButton';
 import Logo from './UI/Logo';
+import Navbar from '../components/Navbar';
 import RecruiterCard from "./UI/RecruiterdCard"; // Verifica el nombre de tu archivo
 
 const Content = () => {
   return (
     <div className="content-container">
-      <PillNav
-        logo={<Logo />}
-        items={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Sobre Mi', href: '/about' },
-          { label: 'Experiencia', href: '/experiencia' },
-          { label: 'Proyectos', href: '/projects' },
-          { label: 'Formación', href: '/formacion' },
-          { label: 'Contacto', href: '/contact' }
-        ]}
-        activeHref="/"   
-        baseColor="#05021b"
-        pillTextColor="#757570"
-        pillColor="#05021b"
-        hoveredPillTextColor="#7CFF00"
-      />
-
+      <Navbar />
       <main className="hero-main">
         <div className="hero-text-content">
           

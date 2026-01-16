@@ -1,0 +1,143 @@
+.education-page {
+    background-color: #05021b;
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 60px;
+}
+
+.education-header {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 60px auto;
+}
+
+.education-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+}
+
+.education-title span {
+    color: #7CFF00;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.education-subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #a0a0ab;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* TARJETA DE EDUCACIÓN */
+.education-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+.education-card:hover {
+    border-color: #7CFF00;
+    transform: translateX(10px);
+    background: rgba(124, 255, 0, 0.02);
+}
+
+.cert-image-side {
+    width: 35%;
+    min-width: 150px;
+    position: relative;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cert-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: 0.5s;
+}
+
+.education-card:hover .cert-image-side img {
+    filter: grayscale(0%);
+}
+
+.cert-content-side {
+    padding: 25px;
+    flex: 1;
+}
+
+.cert-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cert-date {
+    font-family: 'JetBrains Mono', monospace;
+    color: #7CFF00;
+    font-size: 0.85rem;
+}
+
+.cert-icon-neon {
+    color: rgba(124, 255, 0, 0.5);
+}
+
+.cert-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.cert-inst {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    color: #a0a0ab;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.cert-desc {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #888891;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.btn-verify {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #7CFF00;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(124, 255, 0, 0.3);
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-verify:hover {
+    background: #7CFF00;
+    color: #05021b;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .education-card {
+        flex-direction: column;
+    }
+    .cert-image-side {
+        width: 100%;
+        height: 180px;
+    }
+}

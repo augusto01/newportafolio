@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Experiencia.css';
 import PillNav from './UI/PillNav';
+import Navbar from './Navbar';
 import Logo from './UI/Logo';
 
 const Experiencia = () => {
@@ -24,25 +25,12 @@ const Experiencia = () => {
 
   return (
     <div className="experiencia-page">
-      <PillNav
-        logo={<Logo />}
-        items={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Sobre Mi', href: '/about' },
-          { label: 'Experiencia', href: '/experiencia' },
-          { label: 'Proyectos', href: '/projects' },
-          { label: 'Contacto', href: '/contact' }
-        ]}
-        activeHref="/experiencia"   
-        baseColor="#05021b"
-        pillTextColor="#757570"
-        pillColor="#05021b"
-        hoveredPillTextColor="#7CFF00"
-      />
+            <Navbar />
+
 
       <main className="experiencia-content">
         <header className="exp-header">
-          <h1 className="exp-title">Trayectoria.<span>log()</span></h1>
+          <h1 className="exp-title">experience.<span>log()</span></h1>
           <p className="exp-subtitle">Mi recorrido profesional y proyectos clave.</p>
         </header>
 

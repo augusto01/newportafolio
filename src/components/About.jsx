@@ -5,6 +5,7 @@ import FlipCard from "./UI/FlipCard";
 import RecruiterCard from "./UI/RecruiterdCard"; // Corregido el nombre del archivo
 import Logo from './UI/Logo';
 import LogoWall from "./UI/LogoWall";
+import Navbar from "./Navbar";
 
 const MAIN_STACK = [
   { name: "MongoDB", img: "https://skillicons.dev/icons?i=mongodb", featured: true },
@@ -26,6 +27,7 @@ const NAV_ITEMS = [
   { label: 'Inicio', href: '/' },          
   { label: 'Sobre Mi', href: '/about' },
   { label: 'Experiencia', href: '/experiencia' },
+  { label: 'Formación', href: '/formacion' },
   { label: 'Proyectos', href: '/projects' },
   { label: 'Contacto', href: '/contact' }
 ];
@@ -33,16 +35,8 @@ const NAV_ITEMS = [
 const About = () => {
   return (
     <>
-      <PillNav
-        logo={<Logo />}
-        items={NAV_ITEMS} 
-        className="custom-nav"
-        ease="power2.out"
-        baseColor="#05021bff"
-        pillTextColor="#757570ff"
-        pillColor="#05021bff"
-        hoveredPillTextColor="#7CFF00"
-      />
+           <Navbar />
+
       
       <section id="about" className="about-section">
         <div className="container">
@@ -59,7 +53,7 @@ const About = () => {
 
             {/* COLUMNA DERECHA: Información y Skills */}
             <div className="col-lg-8">
-              <h2 className="about-title">Arquitectura & <br/> Desarrollo</h2>
+              <h1 className="exp-title">augusto.<span>info()</span></h1> <br />
               <p className="about-text">
                 Soy <strong>Almirón Pedro Augusto</strong>. Como Programador de Sistemas, mi fortaleza reside en la arquitectura de aplicaciones <strong>Full Stack</strong> eficientes. Soy experto en el ecosistema de JavaScript, con un dominio profundo de <strong>React</strong> para interfaces dinámicas y <strong>Node.js/Express</strong> para backends potentes.
               </p>

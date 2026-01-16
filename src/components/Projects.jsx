@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import PillNav from "./UI/PillNav";
 import Logo from "./UI/Logo";
 import ProjectModal from "../components/UI/ProjectModal";
+import Navbar from "./Navbar";
 import "../styles/proyects.css";
 import { SiReact, SiNodedotjs, SiMongodb } from "react-icons/si";
 
@@ -10,13 +11,7 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [categoriaFiltro, setCategoriaFiltro] = useState("Todas");
 
-  const NAV_ITEMS = [
-    { label: 'Inicio', href: '/' },
-    { label: 'Sobre Mi', href: '/about' },
-    { label: 'Experiencia', href: '/experiencia' },
-    { label: 'Proyectos', href: '/projects' },
-    { label: 'Contacto', href: '/contact' }
-  ];
+ 
 
   const [proyectos] = useState([
     {
@@ -43,21 +38,13 @@ const Projects = () => {
 
   return (
     <div className="projects-page">
-      <PillNav
-        logo={<Logo />}
-        items={NAV_ITEMS}
-        activeHref="/projects"   
-        baseColor="#05021b"
-        pillTextColor="#757570"
-        pillColor="#05021b"
-        hoveredPillTextColor="#7CFF00"
-      />
+      <Navbar></Navbar>
 
       <Container className="projects-container">
         {/* NUEVA SECCIÓN: HERO INTRO PARA RECLUTADORES */}
         <header className="projects-header">
           <div className="hero-badge">PORTFOLIO TÉCNICO</div>
-          <h1 className="projects-title">Proyectos.<span>map()</span></h1>
+          <h1 className="projects-title">projects.<span>map()</span></h1>
           <p className="projects-subtitle">
             Explora una selección de mis trabajos más recientes. Cada proyecto incluye una 
             <strong> explicación técnica detallada</strong> sobre arquitectura, resolución de problemas 

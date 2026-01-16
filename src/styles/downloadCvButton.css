@@ -43,6 +43,7 @@
 
 /* Hover */
 .cv-button:hover {
+  color: #000;
   transform: translateY(-2px);
   box-shadow: 0 0 25px rgba(140, 192, 146, 0.45);
   background-color: #06e711 !important;

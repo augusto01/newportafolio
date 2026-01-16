@@ -1,116 +1,220 @@
-/* Navbar transparente y profesional */
+/* ==========================================================================
+   NAVBAR BASE & GRID (10% - 80% - 10%)
+   ========================================================================== */
 .navbar {
-  background: transparent !important;
-  margin-top: 2.5rem !important;
-  transition: all 0.3s ease;
-  font-family: 'Montserrat', sans-serif; /* Fuente congruente con el sistema */
-}
-
-/* Animación del navbar al cargar */
-.animated-navbar {
-  animation: slideDown 0.6s ease forwards;
-}
-
-@keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Links */
-.navbar .nav-link {
-  font-weight: 500;
-  color: #c9d1d9 !important; /* gris claro */
-  margin: 0 0.7rem;
-  position: relative;
-  transition: color 0.3s ease, transform 0.3s ease;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.navbar .nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #58a6ff; /* azul cyan */
-  transition: width 0.3s ease-in-out;
-}
-
-.navbar .nav-link:hover {
-  color: #58a6ff !important;
-  transform: translateY(-2px);
-}
-
-.navbar .nav-link:hover::after {
+  height: 80px;
+  background-color: rgba(5, 2, 27, 0.95);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
   width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(124, 255, 0, 0.05);
 }
 
-/* Botón CV centrado debajo */
-.cv-button {
-  border-radius: 25px;
-  font-weight: 600;
-  background-color: #0d1117;
-  color: #58a6ff;
-  border-color: #58a6ff;
-  
-  transition: all 0.3s ease;
-  opacity: 0;
-  animation: fadeIn 1s 0.5s forwards;
-  font-family: 'Montserrat', sans-serif;
+.nav-container-grid {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  align-items: center;
+  width: 95%;
+  max-width: 1400px;
+  height: 100%;
 }
 
-.cv-button:hover {
-  color: #0d1117; /* gris oscuro */
-  border-color: #58a6ff;
-  background-color: #58a6ff;
+.nav-column {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
-/* Fade-in del botón */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+.nav-column.left { justify-content: flex-start; }
+.nav-column.center { justify-content: center; width: 100%; }
+.nav-column.right { justify-content: flex-end; }
+
+/* ==========================================================================
+   LOGO A² (Mayúscula, Cursiva, Verde)
+   ========================================================================== */
+.logo-container {
+  text-decoration: none;
+  display: inline-block;
 }
 
-/* Hamburguesa minimalista */
-.navbar-toggler {
-  border: none;
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.navbar-toggler:focus {
-  box-shadow: none;
+.logo-letter {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #7CFF00;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -1px;
 }
 
-.navbar-toggler-icon {
-  background-image: none;
-  width: 25px;
-  height: 2px;
-  background-color: #c9d1d9;
+.logo-exponent {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #7CFF00;
   position: relative;
-  transition: all 0.3s ease-in-out;
+  top: -10px;
+  margin-left: 2px;
 }
 
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 25px;
-  height: 2px;
-  background-color: #c9d1d9;
-  transition: all 0.3s ease-in-out;
+.logo-container:hover .logo-letter,
+.logo-container:hover .logo-exponent {
+  filter: drop-shadow(0 0 5px rgba(124, 255, 0, 0.4));
+  transition: 0.3s ease;
 }
 
-.navbar-toggler-icon::before {
-  top: -8px;
+/* ==========================================================================
+   NAVEGACIÓN CENTRAL
+   ========================================================================== */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar-toggler-icon::after {
-  top: 8px;
+.nav-link {
+  text-decoration: none;
+  color: #a0a0ab;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  text-transform: lowercase;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #7CFF00;
+}
+
+/* ==========================================================================
+   BOTÓN LOGIN (Con Icono y Borde Ceñido)
+   ========================================================================== */
+.login-link-minimal {
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  color: #7CFF00;
+  border: 1px solid rgba(124, 255, 0, 0.3);
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(124, 255, 0, 0.02);
+  white-space: nowrap;
+}
+
+.login-icon {
+  width: 14px;
+  height: 14px;
+  stroke: #7CFF00;
+  transition: transform 0.3s ease;
+}
+
+.login-link-minimal:hover {
+  background: rgba(124, 255, 0, 0.1);
+  border-color: #7CFF00;
+  box-shadow: 0 0 15px rgba(124, 255, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.login-link-minimal:hover .login-icon {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   RESPONSIVO & DROPDOWN MÓVIL
+   ========================================================================== */
+.mobile-only-item { display: none; }
+.desktop-only-wrapper { display: flex; align-items: center; }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+  padding: 5px;
+}
+
+.bar {
+  width: 22px;
+  height: 1px;
+  background-color: #7CFF00;
+  transition: 0.3s ease;
+}
+
+.bar-top.open { transform: translateY(3.5px) rotate(45deg); }
+.bar-bot.open { transform: translateY(-3.5px) rotate(-45deg); }
+
+@media (max-width: 1024px) {
+  .nav-container-grid { 
+    grid-template-columns: 1fr 1fr; 
+  }
+  
+  .desktop-only-wrapper { display: none; }
+  .mobile-toggle { display: flex; }
+  .mobile-only-item { display: block; }
+
+  .nav-column.center {
+    position: fixed;
+    top: 80px; 
+    left: 0; 
+    width: 100%; 
+    height: 0;
+    background-color: #05021b;
+    overflow: hidden;
+    transition: 0.4s ease;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; 
+    z-index: 999;
+  }
+
+  .nav-column.center.mobile-open {
+    height: 450px;
+    padding-top: 40px;
+    border-bottom: 1px solid rgba(124, 255, 0, 0.1);
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+    display: block;
+    padding: 10px 0;
+  }
+
+  /* Estilo especial para el login dentro del dropdown móvil */
+  .mobile-only-item .login-link-minimal {
+    border: 1px solid rgba(124, 255, 0, 0.2);
+    font-size: 1rem;
+    padding: 12px 24px;
+    margin-top: 10px;
+    background: rgba(124, 255, 0, 0.05);
+  }
 }

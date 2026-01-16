@@ -85,7 +85,7 @@ const ContactForm = () => {
           </div>
 
           <button type="submit" className="send-btn">
-            {status === 'success' ? 'SENT SUCCESSFULLY' : 'EXECUTE MISSION'}
+            {status === 'success' ? 'SENT SUCCESSFULLY' : 'ENVIAR'}
           </button>
 
           {status === 'error-captcha' && <p className="msg error">Captcha incorrecto. Inténtalo de nuevo.</p>}

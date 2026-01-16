@@ -1,61 +1,81 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../styles/navbar.css";
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import '../styles/Navbar.css';
 
 const Navbar = () => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-transparent animated-navbar">
-      <div className="container d-flex flex-column align-items-center">
-        {/* Botón hamburguesa */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+  const [isMobile, setIsMobile] = useState(false);
 
-        {/* Links con React Router */}
-        <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <ul className="navbar-nav align-items-center">
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                Sobre Mi
-              </Link>
+  // Icono SVG reutilizable
+  const LoginIcon = () => (
+    <svg className="login-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+  );
+
+  return (
+    <nav className="navbar">
+      <div className="nav-container-grid">
+        
+        {/* COLUMNA 1 (10%): LOGO */}
+        <div className="nav-column left">
+          <NavLink to="/" className="logo-container" onClick={() => setIsMobile(false)}>
+            <div className="logo-wrapper">
+              <span className="logo-letter">A</span>
+              <span className="logo-exponent">2</span>
+            </div>
+          </NavLink>
+        </div>
+
+        {/* COLUMNA 2 (80%): LINKS + LOGIN (Móvil) */}
+        <div className={`nav-column center ${isMobile ? "mobile-open" : ""}`}>
+          <ul className="nav-menu">
+            <li>
+              <NavLink to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={() => setIsMobile(false)}>
+                sobre mi
+              </NavLink>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/proyectos">
-                Proyectos
-              </Link>
+            <li>
+              <NavLink to="/experiencia" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={() => setIsMobile(false)}>
+                experiencia
+              </NavLink>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/experiencia">
-                Experiencia
-              </Link>
+            <li>
+              <NavLink to="/projects" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={() => setIsMobile(false)}>
+                proyectos
+              </NavLink>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/formacion">
-                Formación
-              </Link>
+            <li>
+              <NavLink to="/formacion" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={() => setIsMobile(false)}>
+                certificados
+              </NavLink>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contacto">
-                Contacto
-              </Link>
+            
+            {/* Login móvil (dentro del dropdown) */}
+            <li className="mobile-only-item">
+              <NavLink to="/login" className="login-link-minimal" onClick={() => setIsMobile(false)}>
+                <LoginIcon />
+                <span>login</span>
+              </NavLink>
             </li>
           </ul>
         </div>
 
-        {/* Botón debajo y centrado */}
-        <div className="mt-3">
-          <a href="/cv.pdf" download className="btn btn-outline-info cv-button">
-            Descargar CV
-          </a>
+        {/* COLUMNA 3 (10%): LOGIN DESKTOP / HAMBURGUESA */}
+        <div className="nav-column right">
+          <div className="desktop-only-wrapper">
+            <NavLink to="/login" className="login-link-minimal">
+              <LoginIcon />
+              <span>login</span>
+            </NavLink>
+          </div>
+                  
+          <button className="mobile-toggle" onClick={() => setIsMobile(!isMobile)} aria-label="Abrir menú">
+            <span className={isMobile ? "bar bar-top open" : "bar bar-top"}></span>
+            <span className={isMobile ? "bar bar-bot open" : "bar bar-bot"}></span>
+          </button>
         </div>
+
       </div>
     </nav>
   );
