@@ -6,19 +6,14 @@ const auth = require('../middleware/auth');
 
 // @route   GET api/users/profile
 // @desc    Obtener mi información (Privado)
-router.get('/profile', auth, userController.getProfile);
+router.post('/register', [
+  check('username', 'Requerido').not().isEmpty(),
+  check('email', 'Email inválido').isEmail(),
+  check('password', 'Mínimo 6 caracteres').isLength({ min: 6 })
+], userController.register);
 
-// @route   PUT api/users/profile
-// @desc    Actualizar mi información (Privado)
-router.put('/profile', 
-  [
-    auth,
-    [
-      check('nombreCompleto', 'El nombre no puede estar vacío').not().isEmpty().trim(),
-      check('email', 'Por favor incluye un email válido').isEmail().normalizeEmail()
-    ]
-  ], 
-  userController.updateProfile
-);
+router.get('/profile', auth, userController.getProfile);
+router.put('/profile', auth, userController.updateProfile);
+router.put('/soft-delete', auth, userController.softDeleteProfile);
 
 module.exports = router;

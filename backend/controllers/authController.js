@@ -1,38 +1,75 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
-// Función para el Login
+// @desc    Login de usuario (Soporta Email o Username)
 exports.login = async (req, res) => {
-  const { identifier, password } = req.body;
-  try {
-    // Buscar por email o username
-    let user = await User.findOne({ 
-      $or: [{ email: identifier }, { username: identifier }] 
-    });
+    // Cambiamos 'email' por 'identifier' para que sea más flexible
+    const { identifier, password } = req.body;
 
-    if (!user) return res.status(400).json({ msg: 'Usuario no encontrado' });
+    // Validación básica de entrada
+    if (!identifier || !password) {
+        return res.status(400).json({ msg: 'Por favor ingrese todos los campos' });
+    }
 
-    // Usamos el método que creaste en el Schema
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) return res.status(400).json({ msg: 'Contraseña incorrecta' });
+    try {
+        // 1. Buscamos por Email O Username y que esté Activo
+        let user = await User.findOne({
+            $or: [
+                { email: identifier.toLowerCase() },
+                { username: identifier }
+            ],
+            activo: true
+        });
 
-    const payload = { user: { id: user.id } };
+        if (!user) {
+            return res.status(400).json({ msg: 'Credenciales inválidas o cuenta desactivada' });
+        }
 
-    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '8h' }, (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    });
-  } catch (err) {
-    res.status(500).send('Error en el servidor');
-  }
+        // 2. Comparamos la contraseña usando el método del modelo
+        const isMatch = await user.comparePassword(password);
+        if (!isMatch) {
+            return res.status(400).json({ msg: 'Credenciales inválidas' });
+        }
+
+        // 3. Verificación de seguridad para el JWT_SECRET
+        if (!process.env.JWT_SECRET) {
+            console.error('❌ ERROR: JWT_SECRET no está definido en el archivo .env');
+            return res.status(500).json({ msg: 'Error de configuración en el servidor' });
+        }
+
+        // 4. Generar el Payload
+        const payload = {
+            user: { id: user.id }
+        };
+
+        // 5. Firmar el Token
+        jwt.sign(
+            payload,
+            process.env.JWT_SECRET,
+            { expiresIn: '8h' },
+            (err, token) => {
+                if (err) throw err;
+                
+                // Respuesta exitosa
+                res.json({
+                    token,
+                    user: {
+                        id: user.id,
+                        username: user.username,
+                        email: user.email,
+                        nombre: user.nombre
+                    }
+                });
+            }
+        );
+
+    } catch (err) {
+        console.error('Error en Login:', err.message);
+        res.status(500).json({ msg: 'Error en el servidor' });
+    }
 };
 
-// Función para obtener los datos del usuario logueado
-exports.getUser = async (req, res) => {
-  try {
-    const user = await User.findById(req.user.id).select('-password');
-    res.json(user);
-  } catch (err) {
-    res.status(500).send('Error al obtener usuario');
-  }
+// @desc    Logout
+exports.logout = async (req, res) => {
+    res.json({ msg: 'Sesión cerrada correctamente' });
 };
