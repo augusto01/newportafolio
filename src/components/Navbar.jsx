@@ -50,12 +50,17 @@ const Navbar = () => {
                 certificados
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/contact" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={() => setIsMobile(false)}>
+                Contactame
+              </NavLink>
+            </li>
             
             {/* Login móvil (dentro del dropdown) */}
             <li className="mobile-only-item">
               <NavLink to="/login" className="login-link-minimal" onClick={() => setIsMobile(false)}>
                 <LoginIcon />
-                <span>login</span>
+                <span>Iniciar sesión</span>
               </NavLink>
             </li>
           </ul>
@@ -66,7 +71,7 @@ const Navbar = () => {
           <div className="desktop-only-wrapper">
             <NavLink to="/login" className="login-link-minimal">
               <LoginIcon />
-              <span>login</span>
+              <span>Iniciar sesión</span>
             </NavLink>
           </div>
                   

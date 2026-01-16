@@ -8,6 +8,7 @@ import Formacion from "./components/Formacion";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
 import About from "./components/About";
+import Login from "./components/Login";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
           <Route path="/experiencia" element={<Experiencia />} />
           <Route path="/formacion" element={<Formacion />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

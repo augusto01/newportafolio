@@ -1,0 +1,200 @@
+.login-section {
+  min-height: calc(100vh - 80px); /* Restando el navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(13, 10, 36, 0.8);
+  border: 1px solid rgba(124, 255, 0, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* HEADER DEL FORMULARIO */
+.card-header {
+  background-color: rgba(5, 2, 27, 0.8);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(124, 255, 0, 0.1);
+}
+
+.header-dots {
+  display: flex;
+  gap: 8px;
+  margin-right: 15px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.header-title {
+  font-family: 'JetBrains Mono', monospace;
+  color: #a0a0ab;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+/* FORMULARIO */
+.login-form {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-title {
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  color: #7CFF00;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.input-group input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(124, 255, 0, 0.1);
+  padding: 12px;
+  border-radius: 6px;
+  color: #fff;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #7CFF00;
+  background: rgba(124, 255, 0, 0.05);
+  box-shadow: 0 0 10px rgba(124, 255, 0, 0.1);
+}
+
+/* CAPTCHA */
+.captcha-container {
+  background: rgba(124, 255, 0, 0.02);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px dashed rgba(124, 255, 0, 0.2);
+}
+
+.captcha-label {
+  color: #a0a0ab;
+  font-size: 0.7rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.captcha-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.captcha-box input {
+  width: 60px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #7CFF00;
+  color: #7CFF00;
+  text-align: center;
+  outline: none;
+}
+
+/* BOTÓN LOGIN */
+.login-btn {
+  background: #7CFF00;
+  color: #05021b;
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 20px rgba(124, 255, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.msg {
+  font-size: 0.8rem;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+}
+.msg.error { color: #ff5f56; }
+
+/* ... (Se mantiene el CSS anterior y agregamos esto) ... */
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 45px !important; /* Espacio para el icono */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #7CFF00;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: 0.3s;
+  padding: 5px;
+}
+
+.toggle-password:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.toggle-password svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Estilo para el input de tipo número del captcha para quitar flechas */
+.captcha-box input::-webkit-outer-spin-button,
+.captcha-box input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
