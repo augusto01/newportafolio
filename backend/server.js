@@ -15,6 +15,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/proyectos', require('./routes/projects'));
 app.use('/api/certificados', require('./routes/certificates'));
 app.use('/api/experiencia', require('./routes/experience'));
+app.use('/api/users', require('./routes/users'));
 
 // Ruta base para verificar que el servidor está vivo
 app.get('/', (req, res) => {
