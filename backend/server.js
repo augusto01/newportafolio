@@ -12,7 +12,7 @@ app.use(express.json()); // Permite recibir datos en formato JSON
 // --- RUTAS (Endpoints) ---
 // Agrupamos todas las rutas bajo el prefijo /api
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/proyectos', require('./routes/projects'));
+app.use('/api/proyectos', require('./routes/proyectos'));
 app.use('/api/certificados', require('./routes/certificates'));
 app.use('/api/experiencia', require('./routes/experience'));
 app.use('/api/users', require('./routes/users'));
