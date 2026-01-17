@@ -4,10 +4,10 @@ const ExperienceSchema = new mongoose.Schema({
   puesto: { type: String, required: true },
   empresa: { type: String, required: true },
   descripcion: { type: String, required: true },
-  fechaInicio: { type: Date, required: true },
-  fechaFin: { type: Date }, // Puede ser null si es el trabajo actual
+  fechaInicio: { type: String, required: true }, 
+  fechaFin: { type: String, default: "" }, 
   actual: { type: Boolean, default: false },
-  tecnologias: [String],
+  tecnologias: [String], // Array de strings para el multi-select
   createdAt: { type: Date, default: Date.now }
 });
 
