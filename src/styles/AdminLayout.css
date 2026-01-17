@@ -1,0 +1,132 @@
+/* Variables de color para consistencia */
+:root {
+  --admin-bg: #0f111a;
+  --sidebar-bg: #161925;
+  --accent-color: #00ff41; /* Verde Neón Terminal */
+  --text-main: #e6e6e6;
+  --text-dim: #949494;
+  --danger: #ff4b2b;
+  --border-color: #2a2e3f;
+}
+
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--admin-bg);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  color: var(--text-main);
+}
+
+/* --- SIDEBAR --- */
+.admin-sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sidebar-logo {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.sidebar-user {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  border-left: 3px solid var(--accent-color);
+}
+
+/* --- NAVEGACIÓN --- */
+.admin-nav {
+  flex-grow: 1;
+}
+
+.admin-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-nav li {
+  margin-bottom: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: var(--text-dim);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--accent-color);
+}
+
+.nav-link.active {
+  background: rgba(0, 255, 65, 0.15);
+  color: var(--accent-color);
+  border-right: 3px solid var(--accent-color);
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.admin-main {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.admin-content-card {
+  background-color: var(--sidebar-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* --- BOTÓN LOGOUT --- */
+.logout-btn {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  margin-top: auto; /* Empuja el botón al final */
+}
+
+.logout-btn:hover {
+  background: var(--danger);
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 75, 43, 0.4);
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+  .admin-container {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+}
