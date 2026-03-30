@@ -1,243 +1,314 @@
 /* =========================================
-   PÁGINA DE FORMACIÓN - ESTILOS FINALES
+   ESTILOS FINALES - FORMACIÓN (CLEAN & SLIM)
    ========================================= */
 
-.education-page {
-    background-color: #05021b;
-    min-height: 100vh;
-    padding: 120px 0 60px;
+:root {
+    --neon-green: #7CFF00;
+    --dark-bg: #05021b;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --border-light: rgba(255, 255, 255, 0.08);
 }
 
+/* RESET Y PREVENCIÓN DE SCROLL */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.education-page {
+    background-color: var(--dark-bg);
+    min-height: 100vh;
+    padding: 100px 10px 60px;
+}
+
+@media (min-width: 992px) {
+    .education-page { padding: 140px 20px 80px; }
+}
+
+/* --- HEADERS --- */
 .education-header {
     text-align: center;
-    max-width: 750px;
-    margin: 0 auto 60px;
+    margin-bottom: 40px;
 }
 
 .education-title {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 3.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: white;
-    margin-bottom: 15px;
 }
 
 .education-title span {
-    color: #7CFF00;
+    color: var(--neon-green);
     font-family: 'JetBrains Mono', monospace;
 }
 
-/* SECCIÓN ACADÉMICA (UNNE) - CORREGIDO CON LOGO */
+/* --- CARDS ACADÉMICAS (UNNE) --- */
 .academic-high-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(124, 255, 0, 0.15);
-    border-radius: 20px;
-    padding: 35px;
-    height: 100%;
     display: flex;
+    align-items: stretch; /* Estira los hijos al alto máximo de la card */
     gap: 25px;
-    transition: 0.3s ease;
-    align-items: center; /* Alinea logo y texto verticalmente */
-}
-
-.academic-high-card:hover {
-    border-color: #7CFF00;
-    box-shadow: 0 0 20px rgba(124, 255, 0, 0.05);
-}
-
-/* Contenedor del logo en la Card */
-.academic-logo-card {
-    width: 80px;
-    min-width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.academic-logo-card img {
-    max-height: 100%;
-    width: auto;
-    object-fit: contain;
-}
-
-.academic-info h3 {
+    background: var(--glass-bg);
+    border: 1px solid rgba(124, 255, 0, 0.15);
+    border-radius: 16px;
     color: white !important;
-    font-weight: 800;
-    font-size: 1.5rem;
-}
-
-/* TEXTO BLANCO EN DESCRIPCIÓN ACADÉMICA (CORREGIDO) */
-.academic-desc {
-    font-size: 0.95rem;
-    color: #fff !important; /* Forzado a blanco para contraste */
-    line-height: 1.6;
-    margin-top: 10px;
-}
-
-.status-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-}
-
-.btn-detail-uni {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.3s;
-}
-
-.btn-detail-uni:hover {
-    border-color: #7CFF00;
-    color: #7CFF00;
-}
-
-/* GRID DE CERTIFICADOS */
-.education-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    display: flex;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    height: 100%;
-}
-
-.education-card:hover {
-    border-color: #7CFF00;
-    transform: translateX(10px);
-}
-
-.cert-image-side {
-    width: 35%;
-    min-width: 150px;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.cert-image-side img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    transition: 0.5s;
-}
-
-.education-card:hover .cert-image-side img { filter: grayscale(0%); }
-
-.cert-content-side {
     padding: 25px;
+    height: 100%; /* Asegura que todas las cards de la fila midan lo mismo */
+}
+
+.academic-logo-wrapper {
+    width: 120px; /* Ancho fijo para el área del logo */
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;    /* Centra el logo verticalmente */
+    justify-content: center; /* Centra el logo horizontalmente */
+    flex-shrink: 0;
+    
+    /* El truco para el alto total */
+    align-self: stretch; 
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.academic-logo-img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain; /* Evita que el logo de la UNNE se deforme */
+    filter: brightness(1.1); /* Realza un poco el logo sobre el fondo oscuro */
+}
+
+.academic-info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 
+/* Ajuste responsive para móviles */
+@media (max-width: 768px) {
+    .academic-high-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .academic-logo-wrapper {
+        width: 100%;
+        height: 120px;
+        align-self: center;
+    }
+    .academic-info {
+        align-items: center;
+    }
+}
 
-/* Resaltado de palabras clave en descripciones */
-.cert-desc-card span, 
-.modal-desc-text span,
-.academic-desc span {
-    color: #7CFF00;
-    font-weight: 600;
+/* BADGE COMPACTO */
+.status-badge {
+    color: var(--neon-green) !important;
+    background: rgba(124, 255, 0, 0.1) !important;
+    border: 1px solid var(--neon-green) !important;
     font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem !important;
+    padding: 4px 10px !important;
+    width: fit-content;
+    margin-bottom: 10px;
 }
 
-.cert-title {
-    color: white;
-    font-weight: 800;
-    font-size: 1.2rem;
+.academic-info h3 { font-size: 1.15rem; color: white; font-weight: 800; margin-bottom: 4px; }
+.academic-info h5 { color: var(--neon-green) !important; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; margin-bottom: 10px; }
+
+/* --- GRID DE CERTIFICADOS --- */
+.education-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
 }
 
-/* TEXTO BLANCO EN DESCRIPCIÓN DE CERTIFICADOS (CORREGIDO) */
-.cert-desc-card {
-    font-size: 0.9rem;
-    color: #fff !important; /* Forzado a blanco para contraste */
-    line-height: 1.5;
+@media (min-width: 992px) { .education-card { flex-direction: row; } }
+
+.cert-image-side { width: 100%; height: 160px; overflow: hidden; }
+@media (min-width: 992px) { .cert-image-side { width: 30%; height: auto; } }
+.cert-image-side img { width: 100%; height: 100%; object-fit: cover; }
+
+.cert-content-side {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
-.cert-date { color: #7CFF00; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
-
-.btn-detail {
-    background: transparent;
-    border: 1px solid rgba(124, 255, 0, 0.3);
-    color: #7CFF00;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    align-self: flex-start;
+/* METADATA (FECHA) TOP-RIGHT */
+.cert-meta {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     display: flex;
     align-items: center;
     gap: 8px;
+    z-index: 10;
 }
 
-.btn-detail:hover { background: #7CFF00; color: #05021b; }
+.cert-date { color: var(--neon-green); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; }
+.cert-icon-neon { color: var(--neon-green); font-size: 1rem; }
 
-/* MODAL XL */
-.cert-modal .modal-content {
-    background-color: #0a0a1a;
-    color: white;
-    border: 1px solid rgba(124, 255, 0, 0.2);
-    border-radius: 28px;
+.cert-inst { color: var(--neon-green) !important; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 5px; }
+
+/* PADDING DERECHO PARA NO PISAR LA FECHA */
+.cert-title { 
+    font-size: 1.1rem; 
+    color: white; 
+    font-weight: 800; 
+    padding-right: 90px; 
 }
 
-.cert-modal .modal-title {
-    color: #7CFF00;
-    font-weight: 800;
-    font-size: 2rem;
-}
+.cert-desc-card { font-size: 0.85rem; color: rgba(255,255,255,0.8) !important; margin-top: 10px; }
 
-.modal-preview-container {
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.text-accent { color: #7CFF00; font-family: 'JetBrains Mono', monospace; font-weight: bold; }
-
-/* TEXTO BLANCO EN DESCRIPCIÓN DEL MODAL (CORREGIDO) */
-.modal-desc-text {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #fff !important; /* Forzado a blanco para contraste */
-}
-
-.btn-verify-modal {
+/* --- BOTONES --- */
+.btn-detail, .btn-detail-uni {
+    background: transparent;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 12px 25px;
-    background-color: #0077b5;
-    color: white !important;
-    border-radius: 12px;
-    font-weight: 600;
+    gap: 8px;
+    margin-top: auto;
     transition: 0.3s;
+}
+
+/* =========================================
+   ESTILOS ADICIONALES - MODAL & BOTONES
+   ========================================= */
+
+/* 1. CONTENEDOR DEL MODAL */
+.cert-modal .modal-content {
+    background-color: #050215; /* Un tono más oscuro que el fondo */
+    border: 1px solid rgba(124, 255, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.cert-modal .modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 30px;
+}
+
+.cert-modal .modal-title {
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+/* 2. PREVIEW DEL CERTIFICADO (IMG/PDF) */
+.modal-preview-container {
+    background: #000;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.modal-preview-container img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* 3. TEXTOS DENTRO DEL MODAL */
+.cert-modal h5 {
+    color: var(--neon-green) !important;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.text-secondary {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+}
+
+.modal-desc-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 4. BOTÓN DE VERIFICACIÓN (ESTILO LINKEDIN/PROFESIONAL) */
+.btn-verify-modal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
     margin-top: 20px;
-    width: fit-content;
+    background: rgba(124, 255, 0, 0.05);
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green) !important;
+    border-radius: 12px;
+    font-weight: 700;
     text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    transition: 0.3s all ease;
 }
 
-.btn-verify-modal:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 119, 181, 0.2); }
+.btn-verify-modal:hover {
+    background: var(--neon-green);
+    color: var(--dark-bg) !important;
+    box-shadow: 0 0 20px rgba(124, 255, 0, 0.3);
+    transform: translateY(-2px);
+}
 
-/* RESPONSIVE */
+/* 5. BOTÓN CERRAR (X) */
+.btn-close {
+    filter: invert(1) grayscale(1) brightness(2); /* Hace la X blanca */
+    opacity: 0.8;
+}
+
+/* RESPONSIVE MODAL */
+@media (max-width: 991px) {
+    .cert-modal .modal-body {
+        padding: 25px;
+    }
+    .modal-preview-container {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 576px) { .btn-detail, .btn-detail-uni { width: fit-content; } }
+.btn-detail:hover, .btn-detail-uni:hover { background: var(--neon-green); color: var(--dark-bg); }
+
+/* --- MODAL XL --- */
+.cert-modal .modal-content { background-color: #0a0a1a; border: 1px solid rgba(124, 255, 0, 0.2); border-radius: 20px; color: white; }
+.cert-modal .modal-title { color: var(--neon-green); font-weight: 800; }
+.modal-desc-text span { color: var(--neon-green); font-weight: 600; }
+
+/* --- RESPONSIVE FIXES --- */
 @media (max-width: 768px) {
-    .education-card { flex-direction: column; }
-    .cert-image-side { width: 100%; height: 200px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .education-title { font-size: 2.5rem; }
     .academic-high-card { flex-direction: column; text-align: center; }
-    .academic-logo-card { margin-bottom: 15px; } /* Espacio mobile */
-    .btn-verify-modal { width: 100%; }
+    .academic-logo-card { margin: 0 auto 15px; width: 85px; height: 85px; }
+    .status-badge { margin: 0 auto 10px; }
+    .cert-meta { position: relative; top: 0; right: 0; margin-bottom: 10px; justify-content: flex-end; }
+    .cert-title { padding-right: 0; }
 }
+
+.row { margin-left: 0 !important; margin-right: 0 !important; }
+.col-lg-6 { padding: 10px !important; }
