@@ -1,88 +1,97 @@
 const Experience = require('../models/Experience');
 const { validationResult } = require('express-validator');
 
-// @desc    Obtener todas las experiencias
+// @desc    Obtener todas las experiencias activas
 exports.getAll = async (req, res) => {
-  try {
-    const experiences = await Experience.find().sort({ fechaInicio: -1 });
-    
-    // Si la base de datos está vacía, avisamos con un mensaje claro
-    if (experiences.length === 0) {
-      return res.status(200).json({ 
-        msg: 'No hay experiencias laborales para mostrar', 
-        data: [] 
-      });
-    }
+    try {
+        // Filtramos por activo: true para respetar la baja lógica
+        const experiences = await Experience.find({ activo: true }).sort({ fechaInicio: -1 });
+        
+        if (experiences.length === 0) {
+            return res.status(200).json([]); // Retornamos array vacío si no hay datos
+        }
 
-    res.json(experiences);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ msg: 'Error al obtener experiencias' });
-  }
+        res.json(experiences);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ msg: 'Error al obtener experiencias' });
+    }
 };
 
 // @desc    Crear una nueva experiencia
 exports.create = async (req, res) => {
-  // Revisamos si las validaciones de la ruta detectaron errores
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ 
-      msg: 'Error: Faltan datos obligatorios', 
-      errors: errors.array() 
-    });
-  }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ msg: 'Error: Datos obligatorios faltantes', errors: errors.array() });
+    }
 
-  try {
-    const newExp = new Experience(req.body);
-    const exp = await newExp.save();
-    res.status(201).json({ msg: 'Experiencia agregada correctamente', exp });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ msg: 'Error al guardar la experiencia' });
-  }
+    try {
+        const data = req.body;
+        
+        // LÓGICA DE CONTROL: Si es trabajo actual, fechaFin debe estar vacía
+        if (data.actual) {
+            data.fechaFin = ""; 
+        }
+
+        const newExp = new Experience(data);
+        await newExp.save();
+        res.status(201).json({ msg: 'Experiencia agregada correctamente', exp: newExp });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ msg: 'Error al guardar la experiencia' });
+    }
 };
 
-// @desc    Actualizar experiencia
+// @desc    Actualizar experiencia existente
 exports.update = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ msg: 'Datos de actualización no válidos', errors: errors.array() });
-  }
-
-  try {
-    let exp = await Experience.findById(req.params.id);
-    
-    // Si el ID no existe en la DB
-    if (!exp) {
-      return res.status(404).json({ msg: 'La experiencia que intentas editar no existe' });
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ msg: 'Datos de actualización no válidos', errors: errors.array() });
     }
 
-    exp = await Experience.findByIdAndUpdate(
-      req.params.id, 
-      { $set: req.body }, 
-      { new: true }
-    );
-    res.json({ msg: 'Experiencia actualizada con éxito', exp });
-  } catch (err) {
-    // Si el ID tiene un formato incorrecto (ej: falta un caracter)
-    if (err.kind === 'ObjectId') return res.status(404).json({ msg: 'ID no válido' });
-    res.status(500).json({ msg: 'Error al actualizar' });
-  }
+    try {
+        let data = req.body;
+
+        // LÓGICA DE CONTROL: Aseguramos consistencia en la edición
+        if (data.actual) {
+            data.fechaFin = "";
+        }
+
+        let exp = await Experience.findById(req.params.id);
+        if (!exp) {
+            return res.status(404).json({ msg: 'La experiencia no existe' });
+        }
+
+        // Actualizamos usando $set y desactivando validaciones de tipo estrictas si fuera necesario
+        exp = await Experience.findByIdAndUpdate(
+            req.params.id, 
+            { $set: data }, 
+            { new: true, runValidators: false } 
+        );
+        
+        res.json({ msg: 'Experiencia actualizada con éxito', exp });
+    } catch (err) {
+        if (err.kind === 'ObjectId') return res.status(404).json({ msg: 'ID no válido' });
+        res.status(500).json({ msg: 'Error al actualizar' });
+    }
 };
 
-// @desc    Eliminar experiencia
+// @desc    Baja Lógica de experiencia
 exports.delete = async (req, res) => {
-  try {
-    const exp = await Experience.findById(req.params.id);
-    
-    if (!exp) {
-      return res.status(404).json({ msg: 'La experiencia que intentas borrar no existe' });
-    }
+    try {
+        let exp = await Experience.findById(req.params.id);
+        if (!exp) return res.status(404).json({ msg: 'Registro no encontrado' });
 
-    await Experience.findByIdAndDelete(req.params.id);
-    res.json({ msg: 'Experiencia eliminada correctamente de tu historial' });
-  } catch (err) {
-    if (err.kind === 'ObjectId') return res.status(404).json({ msg: 'ID no válido' });
-    res.status(500).json({ msg: 'Error al eliminar' });
-  }
+        // Cambiamos el estado a inactivo en lugar de borrar el documento
+        exp = await Experience.findByIdAndUpdate(
+            req.params.id,
+            { $set: { activo: false } }, 
+            { new: true }
+        );
+        
+        res.json({ msg: 'Registro marcado como inactivo', exp });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ msg: 'Error al procesar la baja' });
+    }
 };

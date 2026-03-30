@@ -20,14 +20,14 @@ const ExperienceManager = () => {
         setTechList(["React", "Node.js", "MongoDB", "Express", "TypeScript", "Docker", "AWS", "Python", "SQL", "Tailwind"].sort());
     }, []);
 
-    // Formatea de YYYY-MM-DD a DD-MM-YYYY para la tabla
+    // Formateo para mostrar en tabla (DD-MM-YYYY)
     const displayDate = (dateStr) => {
         if (!dateStr) return "";
         const [year, month, day] = dateStr.split('T')[0].split('-');
         return `${day}-${month}-${year}`;
     };
 
-    // Mantiene el formato YYYY-MM-DD necesario para los inputs tipo date
+    // Formateo para el input date (YYYY-MM-DD)
     const inputDate = (dateStr) => {
         if (!dateStr) return "";
         return dateStr.split('T')[0];
@@ -39,12 +39,15 @@ const ExperienceManager = () => {
     };
 
     const fetchExps = async () => {
+        setLoading(true);
         try {
+            // El backend retorna solo registros con { activo: true }
             const res = await api.get('/experiencia');
             const sorted = res.data.sort((a, b) => new Date(b.fechaInicio) - new Date(a.fechaInicio));
             setExps(sorted);
-            setLoading(false);
         } catch (err) {
+            showNotify("Error al cargar datos", "error");
+        } finally {
             setLoading(false);
         }
     };
@@ -60,7 +63,14 @@ const ExperienceManager = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const dataToSend = { ...form, actual: esActual, fechaFin: esActual ? "" : form.fechaFin };
+        
+        // Limpiamos la fecha de fin si el trabajo es actual para evitar errores de validación
+        const dataToSend = { 
+            ...form, 
+            actual: esActual, 
+            fechaFin: esActual ? "" : form.fechaFin,
+            activo: true 
+        };
 
         try {
             if (isEditing) {
@@ -98,9 +108,10 @@ const ExperienceManager = () => {
     };
 
     const handleDelete = async (id) => {
-        if (window.confirm('¿ELIMINAR_REGISTRO?')) {
+        if (window.confirm('¿Desea eliminar este registro? (Se aplicará baja lógica)')) {
             try {
-                await api.delete(`/experiencia/${id}`);
+                // Endpoint de baja lógica configurado en el backend
+                await api.put(`/experiencia/baja/${id}`); 
                 fetchExps();
                 showNotify("REGISTRO_BORRADO", "error");
             } catch (err) {
@@ -136,9 +147,9 @@ const ExperienceManager = () => {
                     <div className="input-group">
                         <label>Hasta</label>
                         <input type="date" className="calendar-input" value={form.fechaFin} onChange={e => setForm({...form, fechaFin: e.target.value})} disabled={esActual} required={!esActual} />
-                        <div className="checkbox-group">
+                        <div className="checkbox-group" style={{marginTop: '10px', display: 'flex', alignItems: 'center', gap: '8px'}}>
                             <input type="checkbox" id="pres" checked={esActual} onChange={() => setEsActual(!esActual)} />
-                            <label htmlFor="pres">Actualidad</label>
+                            <label htmlFor="pres" style={{fontSize: '0.8rem', color: '#fff'}}>Trabajo Actual</label>
                         </div>
                     </div>
                 </div>
@@ -170,42 +181,46 @@ const ExperienceManager = () => {
             </form>
 
             <div className="table-wrapper full-width-table">
-                <table className="admin-table">
-                    <thead>
-                        <tr>
-                            <th>Empresa</th>
-                            <th>Puesto</th>
-                            <th className="desc-header">Descripción</th>
-                            <th>Periodo (DD-MM-YYYY)</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {exps.map(exp => (
-                            <tr key={exp._id}>
-                                <td><span className="empresa-text">{exp.empresa}</span></td>
-                                <td>{exp.puesto}</td>
-                                <td className="desc-cell-wide">{exp.descripcion}</td>
-                                <td className="periodo-cell">
-                                    <div className="date-block">
-                                        <small>Desde:</small>
-                                        <span className="date-tag">{displayDate(exp.fechaInicio)}</span>
-                                    </div>
-                                    <div className="date-block">
-                                        <small>Hasta:</small>
-                                        <span className={`date-tag ${exp.actual ? 'present-tag' : ''}`}>
-                                            {exp.actual ? 'Presente' : displayDate(exp.fechaFin)}
-                                        </span>
-                                    </div>
-                                </td>
-                                <td className="actions-cell">
-                                    <button onClick={() => handleEdit(exp)} className="btn-edit">EDITAR</button>
-                                    <button onClick={() => handleDelete(exp._id)} className="btn-delete">ELIMINAR</button>
-                                </td>
+                {loading ? (
+                    <p style={{textAlign: 'center', color: '#7CFF00'}}>Cargando experiencias...</p>
+                ) : (
+                    <table className="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Empresa</th>
+                                <th>Puesto</th>
+                                <th className="desc-header">Descripción</th>
+                                <th>Periodo</th>
+                                <th>Acciones</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {exps.map(exp => (
+                                <tr key={exp._id}>
+                                    <td data-label="Empresa"><span className="empresa-text">{exp.empresa}</span></td>
+                                    <td data-label="Puesto">{exp.puesto}</td>
+                                    <td data-label="Descripción" className="desc-cell-wide">{exp.descripcion}</td>
+                                    <td data-label="Periodo" className="periodo-cell">
+                                        <div className="date-block">
+                                            <small>Desde:</small>
+                                            <span className="date-tag">{displayDate(exp.fechaInicio)}</span>
+                                        </div>
+                                        <div className="date-block">
+                                            <small>Hasta:</small>
+                                            <span className={`date-tag ${exp.actual ? 'present-tag' : ''}`}>
+                                                {exp.actual ? 'Presente' : displayDate(exp.fechaFin)}
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td data-label="Acciones" className="actions-cell">
+                                        <button onClick={() => handleEdit(exp)} className="btn-edit">EDITAR</button>
+                                        <button onClick={() => handleDelete(exp._id)} className="btn-delete">ELIMINAR</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
             </div>
         </div>
     );
