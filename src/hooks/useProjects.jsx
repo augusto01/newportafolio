@@ -21,7 +21,11 @@ export const useProjects = () => {
         { name: "Node.js", icon: <SiNodedotjs /> },
         { name: "MongoDB", icon: <SiMongodb /> }
       ],
-      imagenes: ["https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80"],
+
+      //imagenes del carrusel del modal, la primera es la imagen principal del proyecto y las siguientes son para el carrusel
+      imagenes:["https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80"
+      ],
       imagen: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80",
       codeUrl: "#",
       videoPlaylistUrl: "#",
@@ -38,6 +42,8 @@ export const useProjects = () => {
         { name: "Socket.io", icon: <SiSocketdotio /> },
         { name: "Node.js", icon: <SiNodedotjs /> }
       ],
+      
+      //imagenes del carrusel del modal, la primera es la imagen principal del proyecto y las siguientes son para el carrusel
       imagenes: ["https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80"],
       imagen: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=80",
       codeUrl: "#",

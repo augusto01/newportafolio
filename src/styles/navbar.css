@@ -1,40 +1,33 @@
-/* ==========================================================================
-   NAVBAR BASE & GRID (10% - 80% - 10%)
-   ========================================================================== */
+:root {
+  --accent: #7CFF00;
+  --bg-dark: #05021b;
+  --text-muted: #a0a0ab;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .navbar {
-  height: 80px;
-  background-color: rgba(5, 2, 27, 0.95);
-  backdrop-filter: blur(12px);
-  display: flex;
-  justify-content: center;
+  height: 80px; /* Altura original */
+  background: rgba(5, 2, 27, 0.85);
+  backdrop-filter: blur(15px);
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  display: flex;
+  justify-content: center;
   border-bottom: 1px solid rgba(124, 255, 0, 0.05);
 }
 
-.nav-container-grid {
-  display: grid;
-  grid-template-columns: 10% 80% 10%;
-  align-items: center;
-  width: 95%;
+.nav-container {
+  width: 95%; /* Ancho original */
   max-width: 1400px;
-  height: 100%;
-}
-
-.nav-column {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 100%;
 }
-
-.nav-column.left { justify-content: flex-start; }
-.nav-column.center { justify-content: center; width: 100%; }
-.nav-column.right { justify-content: flex-end; }
 
 /* ==========================================================================
-   LOGO A² (Mayúscula, Cursiva, Verde)
+   LOGO A² (ESTILOS ORIGINALES RESTAURADOS)
    ========================================================================== */
 .logo-container {
   text-decoration: none;
@@ -50,8 +43,8 @@
 .logo-letter {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #7CFF00;
-  font-style: italic;
+  color: var(--accent); /* Color verde original */
+  font-style: italic; /* Cursiva original */
   line-height: 1;
   letter-spacing: -1px;
 }
@@ -59,12 +52,13 @@
 .logo-exponent {
   font-size: 0.9rem;
   font-weight: 800;
-  color: #7CFF00;
+  color: var(--accent); /* Color verde original */
   position: relative;
-  top: -10px;
+  top: -10px; /* Posición elevada original */
   margin-left: 2px;
 }
 
+/* Sutil brillo en hover para el logo */
 .logo-container:hover .logo-letter,
 .logo-container:hover .logo-exponent {
   filter: drop-shadow(0 0 5px rgba(124, 255, 0, 0.4));
@@ -72,148 +66,139 @@
 }
 
 /* ==========================================================================
-   NAVEGACIÓN CENTRAL
+   NAVEGACIÓN CENTRAL & ANIMACIÓN DE LÍNEA MINIMALISTA
    ========================================================================== */
-.nav-menu {
+.nav-links {
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 35px; /* Gap minimalista */
   margin: 0;
   padding: 0;
 }
 
-.nav-link {
+.nav-links a {
   text-decoration: none;
-  color: #a0a0ab;
+  color: var(--text-muted);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  text-transform: lowercase;
-  transition: 0.3s ease;
-  white-space: nowrap;
-}
-
-.nav-link:hover, .nav-link.active {
-  color: #7CFF00;
-}
-
-/* ==========================================================================
-   BOTÓN LOGIN (Con Icono y Borde Ceñido)
-   ========================================================================== */
-.login-link-minimal {
-  text-decoration: none;
-  font-family: 'JetBrains Mono', monospace;
-  color: #7CFF00;
-  border: 1px solid rgba(124, 255, 0, 0.3);
-  padding: 6px 16px;
-  border-radius: 6px;
   font-size: 0.8rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(124, 255, 0, 0.02);
-  white-space: nowrap;
+  text-transform: lowercase;
+  position: relative;
+  padding: 8px 0; /* Espacio para la línea */
+  transition: var(--transition);
 }
 
-.login-icon {
-  width: 14px;
-  height: 14px;
-  stroke: #7CFF00;
-  transition: transform 0.3s ease;
+.nav-links a:hover, 
+.nav-links a.active {
+  color: #fff;
 }
 
-.login-link-minimal:hover {
-  background: rgba(124, 255, 0, 0.1);
-  border-color: #7CFF00;
-  box-shadow: 0 0 15px rgba(124, 255, 0, 0.2);
-  transform: translateY(-1px);
+/* La línea minimalista inferior que se expande desde el centro */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px; /* Línea fina de 1px */
+  background: var(--accent);
+  transition: var(--transition);
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(124, 255, 0, 0.5);
 }
 
-.login-link-minimal:hover .login-icon {
-  transform: scale(1.1);
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
 }
 
 /* ==========================================================================
-   RESPONSIVO & DROPDOWN MÓVIL
+   BOTÓN LOGIN DESKTOP (ESTILO MINIMALISTA)
+   ========================================================================== */
+.login-btn-desktop {
+  text-decoration: none;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  border: 1px solid rgba(124, 255, 0, 0.2);
+  padding: 6px 18px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.login-btn-desktop:hover {
+  background: rgba(124, 255, 0, 0.05);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(124, 255, 0, 0.1);
+}
+
+/* ==========================================================================
+   RESPONSIVO & DROPDOWN MÓVIL (ESTILO MINIMALISTA)
    ========================================================================== */
 .mobile-only-item { display: none; }
-.desktop-only-wrapper { display: flex; align-items: center; }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
 
-.mobile-toggle {
+.menu-toggle {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   flex-direction: column;
   gap: 6px;
-  padding: 5px;
+  padding: 10px;
 }
 
-.bar {
+.line {
   width: 22px;
-  height: 1px;
-  background-color: #7CFF00;
-  transition: 0.3s ease;
+  height: 1.5px; /* Línea fina hamburguesa */
+  background: var(--accent);
+  transition: var(--transition);
 }
-
-.bar-top.open { transform: translateY(3.5px) rotate(45deg); }
-.bar-bot.open { transform: translateY(-3.5px) rotate(-45deg); }
 
 @media (max-width: 1024px) {
-  .nav-container-grid { 
-    grid-template-columns: 1fr 1fr; 
-  }
-  
-  .desktop-only-wrapper { display: none; }
-  .mobile-toggle { display: flex; }
+  .login-btn-desktop { display: none; }
+  .menu-toggle { display: flex; z-index: 1100; }
   .mobile-only-item { display: block; }
 
-  .nav-column.center {
+  /* Animación hamburguesa de 2 líneas */
+  .menu-toggle.active .line:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+  .menu-toggle.active .line:nth-child(2) { transform: translateY(-3.5px) rotate(-45deg); }
+
+  .nav-menu-wrapper {
     position: fixed;
-    top: 80px; 
-    left: 0; 
-    width: 100%; 
-    height: 0;
-    background-color: #05021b;
-    overflow: hidden;
-    transition: 0.4s ease;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center; 
-    z-index: 999;
-  }
-
-  .nav-column.center.mobile-open {
-    height: 450px;
-    padding-top: 40px;
-    border-bottom: 1px solid rgba(124, 255, 0, 0.1);
-  }
-
-  .nav-menu {
-    flex-direction: column;
-    gap: 30px;
+    top: 0;
+    right: -100%; /* Dropdown lateral */
     width: 100%;
+    height: 100vh;
+    background: var(--bg-dark);
+    transition: var(--transition);
     display: flex;
-    align-items: center; 
     justify-content: center;
+    align-items: center;
   }
 
-  .nav-menu li {
-    width: 100%;
-    text-align: center;
+  .nav-menu-wrapper.open {
+    right: 0;
   }
 
-  .nav-link {
-    font-size: 1.1rem;
-    display: block;
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
   }
 
-  /* Estilo especial para el login dentro del dropdown móvil */
-  .mobile-only-item .login-link-minimal {
-    border: 1px solid rgba(124, 255, 0, 0.2);
-    font-size: 1rem;
-    padding: 12px 24px;
-    margin-top: 10px;
-    background: rgba(124, 255, 0, 0.05);
+  .nav-links a {
+    font-size: 1.2rem; /* Fuente más grande en móvil */
   }
+
+  /* Estilo minimalista para el botón login en móvil */
+  .login-btn-mobile {
+    border: 1px solid var(--accent);
+    padding: 10px 40px !important;
+    border-radius: 5px;
+    color: var(--accent) !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Desactivar línea animada en móvil para mejor UX */
+  .nav-links a::after { display: none; }
 }
