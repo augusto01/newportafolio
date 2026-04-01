@@ -50,7 +50,7 @@ const Formacion = () => {
       id: 5,
       titulo: "AWS Cloud Practitioner Essentials",
       institucion: "AWS",
-      fecha: "Junio 2026",
+      fecha: "Enero 2026",
       descripcion: <>Infraestructura global de <span>AWS</span>, seguridad en la nube, modelos de costos y servicios fundamentales de arquitectura cloud.</>,
       credencialUrl: "https://www.linkedin.com/in/augustoalmiron1/overlay/Certifications/247545361/treasury/",
       imagen: aws 

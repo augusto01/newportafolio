@@ -1,10 +1,14 @@
 import React from "react";
-import { Modal } from "react-bootstrap";
-import { FaCode, FaExternalLinkAlt, FaRocket, FaTimes } from "react-icons/fa";
-import "../../styles/ProjectModal.css"; // IMPORTANTE: Importar el nuevo CSS
+import { Modal, Carousel } from "react-bootstrap";
+import { FaCode, FaPlayCircle, FaRocket, FaTimes } from "react-icons/fa";
+import "../../styles/ProjectModal.css"; 
 
 const ProjectModal = ({ show, onHide, project }) => {
   if (!project) return null;
+
+  // Asumimos que project.imagenes es un array de URLs
+  // Si no existe el array, usamos project.imagen como fallback
+  const images = project.imagenes || [project.imagen];
 
   return (
     <Modal
@@ -18,11 +22,19 @@ const ProjectModal = ({ show, onHide, project }) => {
         <button className="close-modal" onClick={onHide}>
           <FaTimes />
         </button>
-        <img 
-          src={project.imagen} 
-          alt={project.nombre} 
-          className="modal-top-img" 
-        />
+        
+        {/* Carrusel de Imágenes */}
+        <Carousel interval={3000} indicators={images.length > 1} controls={images.length > 1}>
+          {images.map((img, idx) => (
+            <Carousel.Item key={idx}>
+              <img 
+                src={img} 
+                alt={`${project.nombre} slide ${idx}`} 
+                className="modal-top-img d-block w-100" 
+              />
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </div>
 
       <Modal.Body className="modal-body-custom">
@@ -49,13 +61,25 @@ const ProjectModal = ({ show, onHide, project }) => {
           </div>
 
           <div className="modal-actions">
-            <a href={project.codeUrl} className="btn-code" target="_blank" rel="noopener noreferrer">
-              <FaCode /> Código
+            {/* Botón 1: Repositorio de Código */}
+            <a 
+              href={project.codeUrl} 
+              className="btn-code" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <FaCode /> Ver Código
             </a>
-           {/* Botón de Código */}
-                <a href={project.codeUrl} className="btn-code" target="_blank" rel="noopener noreferrer">
-                    <FaCode /> Explicación del Código
-                </a>
+
+            {/* Botón 2: Playlist de Videos (Explicación) */}
+            <a 
+              href={project.videoPlaylistUrl} 
+              className="btn-video" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <FaPlayCircle /> Explicación en Video
+            </a>
           </div>
         </div>
       </Modal.Body>
