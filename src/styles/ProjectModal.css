@@ -245,3 +245,57 @@
   gap: 15px;
   margin-top: 25px;
 }
+
+.video-breakdown-section {
+  margin-top: 25px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.video-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #64ffda; /* Un color cyan/verde llamativo */
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+
+.video-item:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.video-index {
+  font-weight: bold;
+  color: #64ffda;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.video-title {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.video-desc {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin: 0;
+}
+
+.video-link-small {
+  margin-left: auto;
+  color: #64ffda;
+  font-size: 0.8rem;
+}
